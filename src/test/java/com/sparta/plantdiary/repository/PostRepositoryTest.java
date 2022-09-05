@@ -8,16 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashMap;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @DataJpaTest
 @Transactional
 class PostRepositoryTest {
 
     public Member writer;
-    public HashMap<String, String> expectedMember = new HashMap<>();
+    public Post post;
+
 
     @Autowired
     PostRepository postRepository;
@@ -28,12 +28,12 @@ class PostRepositoryTest {
 
     @BeforeEach
     public void setUp() throws Exception {
-        expectedMember.put("nickname", "nickname");
-        expectedMember.put("email", "email@email.com");
-        expectedMember.put("password", "password");
-
-        writer = new Member(expectedMember.get("nickname"), expectedMember.get("email"), expectedMember.get("password"));
+        writer = new Member("nickname", "email", "password");
         memberRepository.save(writer);
+
+
+        post = new Post("title", "content", "thumbnail", writer);
+        postRepository.save(post);
     }
 
     @Test
@@ -43,20 +43,32 @@ class PostRepositoryTest {
 
     @Test
     public void testCreate() {
-        HashMap<String, String> expected = new HashMap<>();
-        expected.put("title", "title");
-        expected.put("content", "content");
-        expected.put("thumbnail", "thumbnail");
 
-        Post post = new Post(expected.get("title"), expected.get("content"), expected.get("thumbnail"), writer);
-        postRepository.save(post);
+        Post newPost = new Post("title", "content", "thumbnail", writer);
+        postRepository.save(newPost);
 
-        assertNotNull(post);
-        assertNotNull(post.getId());
-        assertEquals(expected.get("title"), post.getTitle());
-        assertEquals(expected.get("content"), post.getContent());
-        assertEquals(expected.get("thumbnail"), post.getThumbnail());
-        assertEquals(writer, post.getWriter());
+        assertNotNull(newPost);
+        assertNotNull(newPost.getId());
+        assertEquals("title", newPost.getTitle());
+        assertEquals("content", newPost.getContent());
+        assertEquals("thumbnail", newPost.getThumbnail());
+        assertEquals(writer, newPost.getWriter());
+    }
+
+    @Test
+    public void testGet() {
+        Long id = post.getId();
+
+        Post foundPost = postRepository.get(id).get();
+
+        assertNotNull(foundPost);
+        assertNotNull(foundPost.getId());
+
+        assertEquals(post.getId(), foundPost.getId());
+        assertEquals(post.getContent(), foundPost.getContent());
+        assertEquals(post.getThumbnail(), foundPost.getThumbnail());
+        assertEquals(post.getWriter(), foundPost.getWriter());
+
     }
 
 }

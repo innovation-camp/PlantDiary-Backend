@@ -3,24 +3,23 @@ package com.sparta.plantdiary.service;
 import com.sparta.plantdiary.command.CreatePostCommand;
 import com.sparta.plantdiary.entity.Member;
 import com.sparta.plantdiary.entity.Post;
+import com.sparta.plantdiary.error.NotFoundException;
 import com.sparta.plantdiary.repository.MemberRepository;
+import com.sparta.plantdiary.repository.PostRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashMap;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
 class PostServiceTest {
 
-    public Member writer;
-    public HashMap<String, String> expectedMember = new HashMap<>();
+    Member writer;
+    Post post;
 
 
     @Autowired
@@ -29,32 +28,57 @@ class PostServiceTest {
     @Autowired
     MemberRepository memberRepository;
 
+    @Autowired
+    PostRepository postRepository;
+
+
     @BeforeEach
     public void setUp() throws Exception {
-        expectedMember.put("nickname", "nickname");
-        expectedMember.put("email", "email@email.com");
-        expectedMember.put("password", "password");
-
-        writer = new Member(expectedMember.get("nickname"), expectedMember.get("email"), expectedMember.get("password"));
+        writer = new Member("nickname", "email", "password");
         memberRepository.save(writer);
+
+        post = new Post("title", "content", "thumbnail", writer);
+        postRepository.save(post);
     }
 
     @Test
     public void testSetup() {
         assertNotNull(writer);
+        assertNotNull(post);
     }
 
     @Test
     void testCreated() {
 
         CreatePostCommand command = new CreatePostCommand("title", "content", "thumbnail", writer);
-        Post post = postService.create(command);
+        Post newPost = postService.create(command);
 
-        assertNotNull(post);
-        assertNotNull(post.getId());
-        assertEquals(command.getTitle(), post.getTitle());
-        assertEquals(command.getContent(), post.getContent());
-        assertEquals(command.getThumbnail(), post.getThumbnail());
-        assertEquals(command.getWriter(), post.getWriter());
+        assertNotNull(newPost);
+        assertNotNull(newPost.getId());
+        assertEquals(command.getTitle(), newPost.getTitle());
+        assertEquals(command.getContent(), newPost.getContent());
+        assertEquals(command.getThumbnail(), newPost.getThumbnail());
+        assertEquals(command.getWriter(), newPost.getWriter());
+    }
+
+    @Test
+    void testGetByIdSuccess() {
+        Long id = post.getId();
+
+        Post foundPost = assertDoesNotThrow(() -> postService.getById(id));
+
+        assertNotNull(foundPost);
+        assertEquals(post.getId(), foundPost.getId());
+        assertEquals(post.getTitle(), foundPost.getTitle());
+        assertEquals(post.getContent(), foundPost.getContent());
+        assertEquals(post.getThumbnail(), foundPost.getThumbnail());
+        assertEquals(post.getWriter(), foundPost.getWriter());
+    }
+
+    @Test
+    void testGetByIdFail() {
+        Long id = 2147483647L;
+
+        assertThrows(NotFoundException.class, () -> postService.getById(id));
     }
 }

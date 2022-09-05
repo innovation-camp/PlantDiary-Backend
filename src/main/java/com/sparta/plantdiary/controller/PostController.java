@@ -2,22 +2,22 @@ package com.sparta.plantdiary.controller;
 
 import com.sparta.plantdiary.command.CreatePostCommand;
 import com.sparta.plantdiary.dto.CreatePostRequest;
-import com.sparta.plantdiary.dto.CreatePostResponse;
+import com.sparta.plantdiary.dto.PostResponse;
 import com.sparta.plantdiary.dto.WriterResponseDto;
 import com.sparta.plantdiary.entity.Member;
 import com.sparta.plantdiary.entity.Post;
+import com.sparta.plantdiary.error.NotFoundException;
 import com.sparta.plantdiary.repository.MemberRepository;
 import com.sparta.plantdiary.service.PostService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+@Slf4j
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/post")
@@ -27,7 +27,7 @@ public class PostController {
     public final MemberRepository memberRepository; // TODO: 인증 기능 개발 후 삭제할 것
 
     @PostMapping("")
-    public ResponseEntity<CreatePostResponse> createPost(@RequestBody @Valid CreatePostRequest request) {
+    public ResponseEntity<PostResponse> createPost(@RequestBody @Valid CreatePostRequest request) {
 
         /**
          * TODO: 인증 기능 개발 후 삭제할 것
@@ -45,7 +45,7 @@ public class PostController {
                 .nickname(writer.getNickname())
                 .build();
 
-        CreatePostResponse response = CreatePostResponse.builder()
+        PostResponse response = PostResponse.builder()
                 .id(post.getId())
                 .title(post.getTitle())
                 .content(post.getContent())
@@ -59,4 +59,31 @@ public class PostController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<PostResponse> getPostById(@PathVariable Long id) throws NotFoundException {
+
+        Post post = postService.getById(id);
+
+        WriterResponseDto writerResponseDto = WriterResponseDto.builder()
+                .id(post.getWriter().getId())
+                .nickname(post.getWriter().getNickname())
+                .build();
+
+        PostResponse response = PostResponse.builder()
+                .id(post.getId())
+                .title(post.getTitle())
+                .content(post.getContent())
+                .thumbnail(post.getThumbnail())
+                .countComment(post.getCountComments())
+                .createdAt(post.getCreatedAt())
+                .modifiedAt(post.getModifiedAt())
+                .writer(writerResponseDto)
+                .build();
+        return ResponseEntity.status(HttpStatus.OK).body(response);
+    }
+
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity<String> notFoundExceptionHandler(NotFoundException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+    }
 }
