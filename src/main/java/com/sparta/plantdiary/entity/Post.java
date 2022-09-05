@@ -1,14 +1,12 @@
 package com.sparta.plantdiary.entity;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Builder
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,7 +21,7 @@ public class Post extends TimeStamped{
     private String title;
 
     @Column(nullable = false, columnDefinition = "TEXT")
-    private String text;
+    private String content;
 
     @Column(nullable = true, columnDefinition = "TEXT")
     private String thumbnail;
@@ -38,4 +36,10 @@ public class Post extends TimeStamped{
     @JoinColumn(name = "writer_id")
     private Member writer;
 
+    public Post(String title, String content, String thumbnail, Member writer) {
+        this.title = title;
+        this.content = content;
+        this.thumbnail = thumbnail;
+        this.writer = writer;
+    };
 }
