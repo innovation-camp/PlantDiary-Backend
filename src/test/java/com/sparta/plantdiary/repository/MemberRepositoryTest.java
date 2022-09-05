@@ -20,7 +20,6 @@ class MemberRepositoryTest {
         Member member = new Member("nickname", "email@email.com", "password");
         Member saved = memberRepository.save(member);
         assertNotNull(member);
-        assertEquals(member, saved);
         assertNotNull(member.getId());
     }
 }
