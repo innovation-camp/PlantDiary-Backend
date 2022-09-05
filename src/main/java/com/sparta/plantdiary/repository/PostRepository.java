@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface PostRepository extends JpaRepository<Post, Long> {
 
-    @Query("select post from Post post join fetch post.writer where post.id=:id")
+    @Query("select post from Post post join fetch post.writer where post.id=:id and post.deletedAt is null")
     Optional<Post> get(Long id);
 
 }
