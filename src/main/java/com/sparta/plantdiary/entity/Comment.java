@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Comments extends TimeStamped{
+public class Comment extends TimeStamped{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

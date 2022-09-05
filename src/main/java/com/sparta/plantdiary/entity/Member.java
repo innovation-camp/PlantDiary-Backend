@@ -29,4 +29,10 @@ public class Member extends TimeStamped {
 
     @Column(nullable = true)
     private LocalDateTime deletedAt;
+
+    public Member(String nickname, String email, String password) {
+        this.nickname = nickname;
+        this.email = email;
+        this.password = password;
+    };
 }
