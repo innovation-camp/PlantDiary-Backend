@@ -4,19 +4,23 @@ import com.sparta.plantdiary.command.CreatePostCommand;
 import com.sparta.plantdiary.command.UpdatePostCommand;
 import com.sparta.plantdiary.dto.PostRequest;
 import com.sparta.plantdiary.dto.PostResponse;
+import com.sparta.plantdiary.dto.ThumbnailResponse;
 import com.sparta.plantdiary.dto.WriterResponseDto;
 import com.sparta.plantdiary.entity.Member;
 import com.sparta.plantdiary.entity.Post;
 import com.sparta.plantdiary.error.NotFoundException;
 import com.sparta.plantdiary.repository.MemberRepository;
 import com.sparta.plantdiary.service.PostService;
+import com.sparta.plantdiary.service.S3UploadService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +32,14 @@ public class PostController {
 
     public final PostService postService;
     public final MemberRepository memberRepository; // TODO: 인증 기능 개발 후 삭제할 것
+
+    private final S3UploadService s3UploadService;
+
+    @PostMapping("/upload")
+    public ResponseEntity<ThumbnailResponse> uploadFile(@RequestParam("images") MultipartFile multipartFile) throws IOException {
+        String url = s3UploadService.upload(multipartFile);
+        return new ResponseEntity<>(new ThumbnailResponse(url), HttpStatus.OK);
+    }
 
     @PostMapping("")
     public ResponseEntity<PostResponse> createPost(@RequestBody @Valid PostRequest request) {
