@@ -43,21 +43,8 @@ public class PostController {
 
         Post post = postService.create(command);
 
-        WriterResponseDto writerResponseDto = WriterResponseDto.builder()
-                .id(writer.getId())
-                .nickname(writer.getNickname())
-                .build();
-
-        PostResponse response = PostResponse.builder()
-                .id(post.getId())
-                .title(post.getTitle())
-                .content(post.getContent())
-                .thumbnail(post.getThumbnail())
-                .countComment(post.getCountComments())
-                .createdAt(post.getCreatedAt())
-                .modifiedAt(post.getModifiedAt())
-                .writer(writerResponseDto)
-                .build();
+        WriterResponseDto writerResponseDto = getWriterResponse(writer);
+        PostResponse response = getPostResponse(post, writerResponseDto);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
@@ -69,21 +56,8 @@ public class PostController {
         List<PostResponse> response = new ArrayList<>();
 
         for (Post post : posts) {
-            WriterResponseDto writerResponseDto = WriterResponseDto.builder()
-                    .id(post.getWriter().getId())
-                    .nickname(post.getWriter().getNickname())
-                    .build();
-
-            PostResponse tmp = PostResponse.builder()
-                    .id(post.getId())
-                    .title(post.getTitle())
-                    .content(post.getContent())
-                    .thumbnail(post.getThumbnail())
-                    .countComment(post.getCountComments())
-                    .createdAt(post.getCreatedAt())
-                    .modifiedAt(post.getModifiedAt())
-                    .writer(writerResponseDto)
-                    .build();
+            WriterResponseDto writerResponseDto = getWriterResponse(post.getWriter());
+            PostResponse tmp = getPostResponse(post, writerResponseDto);
 
             response.add(tmp);
         }
@@ -96,21 +70,8 @@ public class PostController {
 
         Post post = postService.getById(id);
 
-        WriterResponseDto writerResponseDto = WriterResponseDto.builder()
-                .id(post.getWriter().getId())
-                .nickname(post.getWriter().getNickname())
-                .build();
-
-        PostResponse response = PostResponse.builder()
-                .id(post.getId())
-                .title(post.getTitle())
-                .content(post.getContent())
-                .thumbnail(post.getThumbnail())
-                .countComment(post.getCountComments())
-                .createdAt(post.getCreatedAt())
-                .modifiedAt(post.getModifiedAt())
-                .writer(writerResponseDto)
-                .build();
+        WriterResponseDto writerResponseDto = getWriterResponse(post.getWriter());
+        PostResponse response = getPostResponse(post, writerResponseDto);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
@@ -127,21 +88,8 @@ public class PostController {
 
         Post post = postService.updateById(command);
 
-        WriterResponseDto writerResponseDto = WriterResponseDto.builder()
-                .id(post.getWriter().getId())
-                .nickname(post.getWriter().getNickname())
-                .build();
-
-        PostResponse response = PostResponse.builder()
-                .id(post.getId())
-                .title(post.getTitle())
-                .content(post.getContent())
-                .thumbnail(post.getThumbnail())
-                .countComment(post.getCountComments())
-                .createdAt(post.getCreatedAt())
-                .modifiedAt(post.getModifiedAt())
-                .writer(writerResponseDto)
-                .build();
+        WriterResponseDto writerResponseDto = getWriterResponse(post.getWriter());
+        PostResponse response = getPostResponse(post, writerResponseDto);
 
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
@@ -151,5 +99,25 @@ public class PostController {
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<String> notFoundExceptionHandler(NotFoundException e) {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    private WriterResponseDto getWriterResponse(Member writer) {
+        return WriterResponseDto.builder()
+                .id(writer.getId())
+                .nickname(writer.getNickname())
+                .build();
+    }
+
+    private PostResponse getPostResponse(Post post, WriterResponseDto writerResponseDto) {
+        return PostResponse.builder()
+                .id(post.getId())
+                .title(post.getTitle())
+                .content(post.getContent())
+                .thumbnail(post.getThumbnail())
+                .countComment(post.getCountComments())
+                .createdAt(post.getCreatedAt())
+                .modifiedAt(post.getModifiedAt())
+                .writer(writerResponseDto)
+                .build();
     }
 }
