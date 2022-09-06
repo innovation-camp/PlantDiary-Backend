@@ -1,6 +1,7 @@
 package com.sparta.plantdiary.service;
 
 import com.sparta.plantdiary.command.CreatePostCommand;
+import com.sparta.plantdiary.command.UpdatePostCommand;
 import com.sparta.plantdiary.entity.Member;
 import com.sparta.plantdiary.entity.Post;
 import com.sparta.plantdiary.error.NotFoundException;
@@ -12,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -20,6 +23,9 @@ class PostServiceTest {
 
     Member writer;
     Post post;
+
+    Long weirdId = 2147483647L;
+
 
 
     @Autowired
@@ -77,8 +83,42 @@ class PostServiceTest {
 
     @Test
     void testGetByIdFail() {
-        Long id = 2147483647L;
+        assertThrows(NotFoundException.class, () -> postService.getById(weirdId));
+    }
 
-        assertThrows(NotFoundException.class, () -> postService.getById(id));
+    @Test
+    void testDeleteByIdSuccess() throws NotFoundException {
+
+        Long id = post.getId();
+
+        postService.deleteById(id);
+
+        Optional<Post> deletedPost = postRepository.findById(id);
+
+        assertFalse(deletedPost.isPresent());
+    }
+
+    @Test
+    void testDeleteByIdFail() {
+        assertThrows(NotFoundException.class, () -> postService.deleteById(weirdId));
+    }
+
+    @Test
+    void testUpdateById() throws NotFoundException {
+        UpdatePostCommand command = new UpdatePostCommand(post.getId(), "업데이트된 제목", "업데이트된 내용", "업데이트된 썸네일");
+        Post updatedPost = postService.updateById(command);
+
+        assertEquals(post.getId(), updatedPost.getId());
+        assertEquals(command.getTitle(), updatedPost.getTitle());
+        assertEquals(command.getContent(), updatedPost.getContent());
+        assertEquals(command.getThumbnail(), updatedPost.getThumbnail());
+
+    }
+
+    @Test
+    void testUpdateByIdFail() {
+        UpdatePostCommand command = new UpdatePostCommand(weirdId, "업데이트된 제목", "업데이트된 내용", "업데이트된 썸네일");
+
+        assertThrows(NotFoundException.class, () -> postService.updateById(command));
     }
 }

@@ -1,6 +1,7 @@
 package com.sparta.plantdiary.service;
 
 import com.sparta.plantdiary.command.CreatePostCommand;
+import com.sparta.plantdiary.command.UpdatePostCommand;
 import com.sparta.plantdiary.entity.Post;
 import com.sparta.plantdiary.error.NotFoundException;
 import com.sparta.plantdiary.repository.PostRepository;
@@ -26,6 +27,16 @@ public class PostService {
     public void deleteById(Long id) throws NotFoundException {
         postRepository.get(id).orElseThrow(() -> new NotFoundException("게시글을 찾을 수 없습니다."));
         postRepository.deleteById(id);
+    }
+
+    public Post updateById(UpdatePostCommand command) throws NotFoundException {
+        Post post = postRepository.get(command.getId()).orElseThrow(() -> new NotFoundException("게시글을 찾을 수 없습니다."));
+        post.setTitle(command.getTitle());
+        post.setContent(command.getContent());
+        post.setThumbnail(command.getThumbnail());
+        postRepository.save(post);
+
+        return post;
     }
 
 }

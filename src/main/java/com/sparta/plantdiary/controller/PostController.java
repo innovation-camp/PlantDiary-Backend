@@ -1,7 +1,8 @@
 package com.sparta.plantdiary.controller;
 
 import com.sparta.plantdiary.command.CreatePostCommand;
-import com.sparta.plantdiary.dto.CreatePostRequest;
+import com.sparta.plantdiary.command.UpdatePostCommand;
+import com.sparta.plantdiary.dto.PostRequest;
 import com.sparta.plantdiary.dto.PostResponse;
 import com.sparta.plantdiary.dto.WriterResponseDto;
 import com.sparta.plantdiary.entity.Member;
@@ -27,7 +28,7 @@ public class PostController {
     public final MemberRepository memberRepository; // TODO: 인증 기능 개발 후 삭제할 것
 
     @PostMapping("")
-    public ResponseEntity<PostResponse> createPost(@RequestBody @Valid CreatePostRequest request) {
+    public ResponseEntity<PostResponse> createPost(@RequestBody @Valid PostRequest request) {
 
         /**
          * TODO: 인증 기능 개발 후 삭제할 것
@@ -86,6 +87,32 @@ public class PostController {
     public ResponseEntity<String> deletePostById(@PathVariable Long id) throws NotFoundException {
         postService.deleteById(id);
         return new ResponseEntity<>("삭제되었습니다.", HttpStatus.OK);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<PostResponse> updatePostById(@PathVariable Long id, @RequestBody @Valid PostRequest request) throws NotFoundException {
+
+        UpdatePostCommand command = new UpdatePostCommand(id, request.getTitle(), request.getContent(), request.getThumbnail());
+
+        Post post = postService.updateById(command);
+
+        WriterResponseDto writerResponseDto = WriterResponseDto.builder()
+                .id(post.getWriter().getId())
+                .nickname(post.getWriter().getNickname())
+                .build();
+
+        PostResponse response = PostResponse.builder()
+                .id(post.getId())
+                .title(post.getTitle())
+                .content(post.getContent())
+                .thumbnail(post.getThumbnail())
+                .countComment(post.getCountComments())
+                .createdAt(post.getCreatedAt())
+                .modifiedAt(post.getModifiedAt())
+                .writer(writerResponseDto)
+                .build();
+
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
 

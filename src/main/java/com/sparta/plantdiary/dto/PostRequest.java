@@ -7,7 +7,7 @@ import javax.validation.constraints.NotEmpty;
 
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CreatePostRequest {
+public class PostRequest {
 
     @NotEmpty
     private String title;
