@@ -8,8 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
 @Transactional
@@ -69,6 +70,17 @@ class PostRepositoryTest {
         assertEquals(post.getThumbnail(), foundPost.getThumbnail());
         assertEquals(post.getWriter(), foundPost.getWriter());
 
+    }
+
+    @Test
+    public void testDelete() {
+        Long id = post.getId();
+
+        postRepository.deleteById(id);
+
+        Optional<Post> deletedPost = postRepository.findById(id);
+
+        assertFalse(deletedPost.isPresent());
     }
 
 }
