@@ -1,4 +1,4 @@
-package com.sparta.plantdiary;
+package com.example.miniproject;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,10 +6,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @EnableJpaAuditing
 @SpringBootApplication
-public class PlantDiaryApplication {
+public class MiniprojectApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(PlantDiaryApplication.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(MiniprojectApplication.class, args);
+	}
 
 }
