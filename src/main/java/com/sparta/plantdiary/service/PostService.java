@@ -8,6 +8,8 @@ import com.sparta.plantdiary.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class PostService {
@@ -17,6 +19,10 @@ public class PostService {
     public Post create(CreatePostCommand command) {
         Post post = new Post(command.getTitle(), command.getContent(), command.getThumbnail(), command.getWriter());
         return postRepository.save(post);
+    }
+
+    public List<Post> getAll() {
+        return postRepository.getAll();
     }
 
     public Post getById(Long id) throws NotFoundException {

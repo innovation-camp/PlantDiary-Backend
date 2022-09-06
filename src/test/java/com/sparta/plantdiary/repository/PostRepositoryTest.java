@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -83,4 +84,10 @@ class PostRepositoryTest {
         assertFalse(deletedPost.isPresent());
     }
 
+    @Test
+    public void testGetAll() {
+        List<Post> posts = postRepository.getAll();
+
+        assertNotNull(posts);
+    }
 }

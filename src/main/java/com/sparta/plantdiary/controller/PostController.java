@@ -17,6 +17,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -58,6 +60,35 @@ public class PostController {
                 .build();
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    @GetMapping("")
+    public ResponseEntity<List<PostResponse>> getPosts() {
+        List<Post> posts = postService.getAll();
+
+        List<PostResponse> response = new ArrayList<>();
+
+        for (Post post : posts) {
+            WriterResponseDto writerResponseDto = WriterResponseDto.builder()
+                    .id(post.getWriter().getId())
+                    .nickname(post.getWriter().getNickname())
+                    .build();
+
+            PostResponse tmp = PostResponse.builder()
+                    .id(post.getId())
+                    .title(post.getTitle())
+                    .content(post.getContent())
+                    .thumbnail(post.getThumbnail())
+                    .countComment(post.getCountComments())
+                    .createdAt(post.getCreatedAt())
+                    .modifiedAt(post.getModifiedAt())
+                    .writer(writerResponseDto)
+                    .build();
+
+            response.add(tmp);
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     @GetMapping("/{id}")

@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -120,5 +121,11 @@ class PostServiceTest {
         UpdatePostCommand command = new UpdatePostCommand(weirdId, "업데이트된 제목", "업데이트된 내용", "업데이트된 썸네일");
 
         assertThrows(NotFoundException.class, () -> postService.updateById(command));
+    }
+
+    @Test
+    void testGetAll() {
+        List<Post> posts = postService.getAll();
+        assertNotNull(posts);
     }
 }
