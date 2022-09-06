@@ -5,8 +5,8 @@ Content-Type: application/json
 {
 "nickname":"test1",
 "email":"test1@naver.com",
-"password":"password123!",
-"passwordConfirm":"password123!"
+"password":"password123",
+"passwordConfirm":"password123"
 }
 
 ######## 회원가입2
@@ -16,18 +16,18 @@ Content-Type: application/json
 {
   "nickname":"test2",
   "email":"test2@naver.com",
-  "password":"password123!",
-  "passwordConfirm":"password123!"
+  "password":"password123",
+  "passwordConfirm":"password123"
 }
 
 
 
 ########
-POST http://localhost:8080/api/member/login
+POST http://localhost:8080/api/auth/login
 Content-Type: application/json
 
 {
   "email":"test1@naver.com",
-  "password":"password123!"
+  "password":"password123"
 }
 

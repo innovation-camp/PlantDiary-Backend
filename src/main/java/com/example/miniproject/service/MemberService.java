@@ -72,7 +72,7 @@ public class MemberService {
             return ResponseDto.fail("INVALID_MEMBER", "비밀번호가 일치하지 않습니다.");
         }
 
-//        //원래는? 그냥 token을 바로 헤더로 넘겨줬는데? cookie로 넣어볼라고 했는데? token이 안 넘어가니까, 이걸 다시 해체해서 보내줘야 하나?
+
         TokenDto tokenDto = tokenProvider.generateTokenDto(member);
 
         Cookie cookie1 = new Cookie("AccessToken", tokenDto.getAccessToken());
