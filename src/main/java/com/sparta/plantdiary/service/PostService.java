@@ -19,10 +19,13 @@ public class PostService {
     }
 
     public Post getById(Long id) throws NotFoundException {
-
         Post post = postRepository.get(id).orElseThrow(() -> new NotFoundException("게시글을 찾을 수 없습니다."));
-
         return post;
+    }
+
+    public void deleteById(Long id) throws NotFoundException {
+        postRepository.get(id).orElseThrow(() -> new NotFoundException("게시글을 찾을 수 없습니다."));
+        postRepository.deleteById(id);
     }
 
 }

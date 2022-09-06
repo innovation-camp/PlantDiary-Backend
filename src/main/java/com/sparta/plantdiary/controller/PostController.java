@@ -82,6 +82,14 @@ public class PostController {
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deletePostById(@PathVariable Long id) throws NotFoundException {
+        postService.deleteById(id);
+        return new ResponseEntity<>("삭제되었습니다.", HttpStatus.OK);
+    }
+
+
+
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<String> notFoundExceptionHandler(NotFoundException e) {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
