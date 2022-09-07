@@ -1,6 +1,7 @@
 package com.sparta.plantdiary.service;
 
 import com.sparta.plantdiary.command.CreateCommentCommand;
+import com.sparta.plantdiary.command.UpdateCommentCommand;
 import com.sparta.plantdiary.entity.Comment;
 import com.sparta.plantdiary.entity.Post;
 import com.sparta.plantdiary.error.NotFoundException;
@@ -28,6 +29,17 @@ public class CommentService {
         postRepository.get(postId).orElseThrow(() -> new NotFoundException("게시글을 찾을 수 없습니다."));
         List<Comment> comments = commentRepository.getAll(postId);
         return comments;
+    }
+
+    public Comment updateById(UpdateCommentCommand command) throws NotFoundException {
+        postRepository.get(command.getPostId()).orElseThrow(() -> new NotFoundException("게시글을 찾을 수 없습니다."));
+
+        Comment comment = commentRepository.findById(command.getId()).orElseThrow(() -> new NotFoundException("게시글을 찾을 수 없습니다."));
+
+        comment.setContent(command.getContent());
+        commentRepository.save(comment);
+
+        return comment;
     }
 
 }

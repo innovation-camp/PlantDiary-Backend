@@ -1,6 +1,7 @@
 package com.sparta.plantdiary.service;
 
 import com.sparta.plantdiary.command.CreateCommentCommand;
+import com.sparta.plantdiary.command.UpdateCommentCommand;
 import com.sparta.plantdiary.entity.Comment;
 import com.sparta.plantdiary.entity.Member;
 import com.sparta.plantdiary.entity.Post;
@@ -77,5 +78,27 @@ class CommentServiceTest {
         assertNotNull(comments);
     }
 
+    @Test
+    public void testUpdateById() throws NotFoundException {
+        UpdateCommentCommand command = new UpdateCommentCommand(comment.getId(), "업데이트된 댓글", post.getId());
+        Comment updatedComment = commentService.updateById(command);
 
+        assertEquals(comment.getId(), updatedComment.getId());
+        assertEquals(command.getContent(), updatedComment.getContent());
+        assertEquals(post.getWriter(), updatedComment.getWriter());
+    }
+
+    @Test
+    public void testUpdateByIdWithWrongIdFail() {
+        UpdateCommentCommand command = new UpdateCommentCommand(weirdId, "잘못된 댓글 id", post.getId());
+
+        assertThrows(NotFoundException.class, () -> commentService.updateById(command));
+    }
+
+    @Test
+    public void testUpdateByIdWithWrongPostIdFail() {
+        UpdateCommentCommand command = new UpdateCommentCommand(comment.getId(), "잘못된 댓글 id", weirdId);
+
+        assertThrows(NotFoundException.class, () -> commentService.updateById(command));
+    }
 }

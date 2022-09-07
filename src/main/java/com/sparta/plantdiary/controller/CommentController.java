@@ -51,7 +51,7 @@ public class CommentController {
     }
 
     @GetMapping("")
-    public ResponseEntity<List<CommentResponse>> getComments(Long postId) throws NotFoundException {
+    public ResponseEntity<List<CommentResponse>> getComments(@RequestParam Long postId) throws NotFoundException {
         List<Comment> comments = commentService.getAll(postId);
 
         List<CommentResponse> response = new ArrayList<>();
@@ -66,18 +66,18 @@ public class CommentController {
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
-//    @PutMapping("/{id}")
-//    public ResponseEntity<CommentResponse> updateCommentById(@PathVariable Long id, @RequestBody @Valid CommentRequest request) throws NotFoundException {
-//
-//        UpdateCommentCommand command = new UpdateCommentCommand(id, request.getContent(), request.getPostId()  );
-//
-//        Comment comment = commentService.updateById(command);
-//
-//        WriterResponseDto writerResponseDto = getWriterResponse(post.getWriter());
-//        CommentResponse response = getPostResponse(post, writerResponseDto);
-//
-//        return ResponseEntity.status(HttpStatus.OK).body(response);
-//    }
+    @PutMapping("/{id}")
+    public ResponseEntity<CommentResponse> updateCommentById(@PathVariable Long id, @RequestBody @Valid CommentRequest request) throws NotFoundException {
+
+        UpdateCommentCommand command = new UpdateCommentCommand(id, request.getContent(), request.getPostId());
+
+        Comment comment = commentService.updateById(command);
+
+        WriterResponseDto writerResponseDto = getWriterResponse(comment.getWriter());
+        CommentResponse response = getCommentResponse(comment, writerResponseDto);
+
+        return ResponseEntity.status(HttpStatus.OK).body(response);
+    }
 
 
     private WriterResponseDto getWriterResponse(Member writer) {
