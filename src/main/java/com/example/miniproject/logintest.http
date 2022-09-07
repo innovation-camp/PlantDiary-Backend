@@ -31,3 +31,10 @@ Content-Type: application/json
   "password":"password123"
 }
 
+########
+GET http://localhost:8080/api/auth/mypage
+
+
+
+
+

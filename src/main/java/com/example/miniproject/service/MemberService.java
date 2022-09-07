@@ -2,6 +2,7 @@ package com.example.miniproject.service;
 
 import com.example.miniproject.controller.request.*;
 import com.example.miniproject.controller.response.MemberResponseDto;
+import com.example.miniproject.controller.response.MypageResponseDto;
 import com.example.miniproject.controller.response.ResponseDto;
 import com.example.miniproject.domain.Member;
 import com.example.miniproject.jwt.TokenProvider;
@@ -97,26 +98,41 @@ public class MemberService {
         );
     }
 
-//    public ResponseDto<?> mypage(HttpServletRequest request){
-//        //헤더에서 token 가져오는 거 아니고 cookie에서 token 가져와야 함
-////        if (null == request.getHeader("Refresh-Token")) {
-////            return ResponseDto.fail("MEMBER_NOT_FOUND",
-////                    "로그인이 필요합니다.");
-////        }
-////
-////        if (null == request.getHeader("Authorization")) {
-////            return ResponseDto.fail("MEMBER_NOT_FOUND",
-////                    "로그인이 필요합니다.");
-////        }
-//        Member member = validateMember(request);
-//        if (null == member) {
-//            return ResponseDto.fail("INVALID_TOKEN", "Token이 유효하지 않습니다.");
-//        }
-//
-//        //request에서 email 가져와서 그에 해당하는 member의 eamil, nickname, password을 줘야하는데? password는 그냥 주면 안 될텐데
-//
-//
-//    }
+    public ResponseDto<?> mypage(HttpServletRequest request) {
+        String RefreshToken;
+        String AccessToken;
+
+        //헤더에서 token 가져오는 거 아니고 cookie에서 RefreshToken있는지 확인하기
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null && cookies.length > 0) {
+            for (Cookie cookieVo : cookies) {
+                if (cookieVo.getName() == "RefreshToken") {
+                    RefreshToken = cookieVo.getValue();
+                }
+            }
+
+
+            Member member = validateMember(request);
+            if (null == member) {
+                return ResponseDto.fail("INVALID_TOKEN", "Token이 유효하지 않습니다.");
+            }
+
+            //request에서 email 가져와서 그에 해당하는 member의 eamil, nickname 줘야함
+            return ResponseDto.success(
+                    MypageResponseDto.builder()
+                            .id(member.getId())
+                            .nickname(member.getNickname())
+                            .email(member.getEmail())
+                            .build()
+            );
+        }
+    }
+
+    public ResponseDto<?> mypageChange(MemberRequestDto requestDto, HttpServletRequest request){
+        //비밀번호 존재하는지 확인하기
+
+        return
+    }
 
 
     public ResponseDto<?> emailCheak(EmailRequestDto requestDto){
