@@ -13,4 +13,3 @@ public class NicknameRequestDto {
     @NotBlank
     private String nickname;
 }
-

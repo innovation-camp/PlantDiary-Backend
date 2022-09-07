@@ -36,7 +36,6 @@ public class TokenProvider {
     private final RefreshTokenRepository refreshTokenRepository;
 //  private final UserDetailsServiceImpl userDetailsService;
 
-    //생성자
     public TokenProvider(@Value("${jwt.secret}") String secretKey,
                          RefreshTokenRepository refreshTokenRepository) {
         this.refreshTokenRepository = refreshTokenRepository;
@@ -55,12 +54,10 @@ public class TokenProvider {
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
 
-
         String refreshToken = Jwts.builder()
                 .setExpiration(new Date(now + REFRESH_TOKEN_EXPRIRE_TIME))
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
-
 
         RefreshToken refreshTokenObject = RefreshToken.builder()
                 .id(member.getId())
@@ -108,6 +105,7 @@ public class TokenProvider {
     public boolean validateToken(String token) {
         try {
             Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
+
             return true;
         } catch (SecurityException | MalformedJwtException e) {
             log.info("Invalid JWT signature, 유효하지 않는 JWT 서명 입니다.");

@@ -19,7 +19,6 @@ public class CookieManager {
             for(Cookie c : cookies){
                 String name = c.getName(); //쿠키이름
                 String value = c.getValue(); //쿠키값
-
                 if(name.equals(findId)){
                     return value;
                 }

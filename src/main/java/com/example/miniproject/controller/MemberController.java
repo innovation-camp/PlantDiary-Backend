@@ -16,7 +16,6 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 @RestController
 public class MemberController {
-
     private final MemberService memberService;
 
     @RequestMapping(value = "/api/auth/register", method = RequestMethod.POST)
@@ -43,15 +42,15 @@ public class MemberController {
         return memberService.nicknameCheak(requestDto);
     }
 
-//    //회원정보 조회
+    //    //회원정보 조회
     @RequestMapping(value = "/api/auth/mypage", method = RequestMethod.GET)
     public ResponseDto<?> mypage(HttpServletRequest request) {
         return memberService.mypage(request);
     }
 
     //회원정보 수정
-    @RequestMapping(value = "/api/auth/mypage", method = RequestMethod.PUT)
-    public ResponseDto<?> mypageChange(@RequestBody @Valid MemberRequestDto requestDto, HttpServletRequest request) {
-        return memberService.mypageChange(requestDto, request);
-    }
+//    @RequestMapping(value = "/api/auth/mypage", method = RequestMethod.PUT)
+//    public ResponseDto<?> mypageChange(@RequestBody @Valid MemberRequestDto requestDto, HttpServletRequest request) {
+//        return memberService.mypageChange(requestDto, request);
+//    }
 }

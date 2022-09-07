@@ -62,7 +62,7 @@ public class JwtFilter extends OncePerRequestFilter {
                 response.setContentType("application/json;charset=UTF-8");
                 response.getWriter().println(
                         new ObjectMapper().writeValueAsString(
-                                ResponseDto.fail("BAD_REQUEST", "Token이 유효햐지 않습니다.")
+                                ResponseDto.fail("BAD_REQUEST", "Token이 유효하지 않습니다.")
                         )
                 );
                 response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -82,6 +82,7 @@ public class JwtFilter extends OncePerRequestFilter {
 
         filterChain.doFilter(request, response);
     }
+
     private String resolveToken(HttpServletRequest request) {
         String bearerToken = request.getHeader(AUTHORIZATION_HEADER);
         if (StringUtils.hasText(bearerToken) && bearerToken.startsWith(BEARER_PREFIX)) {

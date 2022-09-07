@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.util.CookieGenerator;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -64,7 +65,6 @@ public class MemberService {
     @Transactional
     public ResponseDto<?> login(LoginRequestDto requestDto, HttpServletResponse response){
         Member member = isPresentMemberByEmail(requestDto.getEmail());
-
         if(member == null){
             return ResponseDto.fail("MEMBER_NOT_FOUND",
                     "사용자를 찾을 수 없습니다.");
@@ -73,18 +73,17 @@ public class MemberService {
             return ResponseDto.fail("INVALID_MEMBER", "비밀번호가 일치하지 않습니다.");
         }
 
-
         TokenDto tokenDto = tokenProvider.generateTokenDto(member);
 
-        Cookie cookie1 = new Cookie("AccessToken", tokenDto.getAccessToken());
-//      cookie1.setMaxAge(tokenDto.getAccessTokenExpiresIn());
-        cookie1.setPath("/");
-        response.addCookie(cookie1);
+        CookieGenerator cg1 = new CookieGenerator();
+        cg1.setCookieName("accessToken");
+        cg1.setCookieMaxAge(60*60*24);
+        cg1.addCookie(response, tokenDto.getAccessToken());
 
-        Cookie cookie2 = new Cookie("RefreshToken", tokenDto.getRefreshToken());
-        cookie2.setPath("/");
-        response.addCookie(cookie2);
-
+        CookieGenerator cg2 = new CookieGenerator();
+        cg2.setCookieName("refreshToken");
+        cg2.setCookieMaxAge(60*60*24);
+        cg2.addCookie(response, tokenDto.getRefreshToken());
 
 
         return ResponseDto.success(
@@ -99,18 +98,17 @@ public class MemberService {
     }
 
     public ResponseDto<?> mypage(HttpServletRequest request) {
-        String RefreshToken;
         String AccessToken;
 
         //헤더에서 token 가져오는 거 아니고 cookie에서 RefreshToken있는지 확인하기
         Cookie[] cookies = request.getCookies();
         if (cookies != null && cookies.length > 0) {
             for (Cookie cookieVo : cookies) {
-                if (cookieVo.getName() == "RefreshToken") {
-                    RefreshToken = cookieVo.getValue();
+                if (cookieVo.getName() == "refreshToken") {
+                    String RefreshToken = cookieVo.getValue();
                 }
             }
-
+        }
 
             Member member = validateMember(request);
             if (null == member) {
@@ -126,14 +124,12 @@ public class MemberService {
                             .build()
             );
         }
-    }
 
-    public ResponseDto<?> mypageChange(MemberRequestDto requestDto, HttpServletRequest request){
-        //비밀번호 존재하는지 확인하기
-
-        return
-    }
-
+//    public ResponseDto<?> mypageChange(MemberRequestDto requestDto, HttpServletRequest request){
+//        //비밀번호 존재하는지 확인하기
+//
+//        return
+//
 
     public ResponseDto<?> emailCheak(EmailRequestDto requestDto){
         if(null != isPresentMemberByEmail(requestDto.getEmail())){
@@ -151,7 +147,18 @@ public class MemberService {
 
     @Transactional
     public Member validateMember(HttpServletRequest request) {
-        if (!tokenProvider.validateToken(request.getHeader("Refresh-Token"))) {
+        Cookie[] cookies = request.getCookies();
+        String refreshToken = null;
+        if (cookies != null && cookies.length > 0) {
+            for (Cookie cookieVo : cookies) {
+                if (cookieVo.getName() == "RefreshToken") {
+                    refreshToken = cookieVo.getValue();
+                    break;
+                }
+            }
+        }
+
+        if (!tokenProvider.validateToken(refreshToken)) {
             return null;
         }
         return tokenProvider.getMemberFromAuthentication();
