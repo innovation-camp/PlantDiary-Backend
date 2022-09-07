@@ -11,6 +11,11 @@ import com.sparta.plantdiary.entity.Member;
 import com.sparta.plantdiary.error.NotFoundException;
 import com.sparta.plantdiary.repository.MemberRepository;
 import com.sparta.plantdiary.service.CommentService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -22,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
+@Tag(name = "comments", description = "댓글 API")
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/comments")
@@ -31,6 +37,9 @@ public class CommentController {
     public final MemberRepository memberRepository;
 
 
+    @Operation(summary = "create comment", description = "댓글 생성하기")
+    @ApiResponse(responseCode = "200", description = "OK", content = @Content(schema = @Schema(implementation = CommentResponse.class)))
+    @ResponseBody
     @PostMapping("")
     public ResponseEntity<CommentResponse> createComment(@RequestBody @Valid CommentRequest request) throws NotFoundException {
         /**
@@ -50,6 +59,9 @@ public class CommentController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
+    @Operation(summary = "get comments", description = "댓글 리스트 가져오기")
+    @ApiResponse(responseCode = "200", description = "OK", content = @Content(schema = @Schema(implementation = CommentResponse.class)))
+    @ResponseBody
     @GetMapping("")
     public ResponseEntity<List<CommentResponse>> getComments(@RequestParam Long postId) throws NotFoundException {
         List<Comment> comments = commentService.getAll(postId);
@@ -66,6 +78,9 @@ public class CommentController {
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
+    @Operation(summary = "update comment", description = "댓글 수정하기")
+    @ApiResponse(responseCode = "200", description = "OK", content = @Content(schema = @Schema(implementation = CommentResponse.class)))
+    @ResponseBody
     @PutMapping("/{id}")
     public ResponseEntity<CommentResponse> updateCommentById(@PathVariable Long id, @RequestBody @Valid CommentRequest request) throws NotFoundException {
 
@@ -79,6 +94,8 @@ public class CommentController {
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
+    @Operation(summary = "delete comment", description = "댓글 삭제하기")
+    @ResponseBody
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deletedCommentsById(@PathVariable Long id) throws NotFoundException {
         commentService.deleteById(id);
