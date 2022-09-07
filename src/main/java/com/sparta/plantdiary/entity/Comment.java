@@ -32,4 +32,10 @@ public class Comment extends TimeStamped{
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id")
     private Post post;
+
+    public Comment(String content, Member writer, Post post) {
+        this.content = content;
+        this.writer = writer;
+        this.post = post;
+    }
 }
