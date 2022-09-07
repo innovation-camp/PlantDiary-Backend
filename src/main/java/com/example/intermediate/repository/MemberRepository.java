@@ -1,0 +1,12 @@
+package com.example.intermediate.repository;
+
+import com.example.intermediate.repository.domain.Member;
+import java.util.Optional;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface MemberRepository extends JpaRepository<Member, Long> {
+
+  Optional<Member> findById(Long id);
+  Optional<Member> findByEmail(String email);
+  Optional<Member> findByNickname(String nickname);
+}

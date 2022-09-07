@@ -1,0 +1,37 @@
+######## 회원가입1
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "nickname":"test1",
+  "email":"test1@naver.com",
+  "password":"password123",
+  "passwordConfirm":"password123"
+}
+
+######## 회원가입2
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "nickname":"test2",
+  "email":"test2@naver.com",
+  "password":"password123",
+  "passwordConfirm":"password123"
+}
+
+
+
+########
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "email":"test1@naver.com",
+  "password":"password123"
+}
+
+########
+GET http://localhost:8080/api/auth/mypage
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MjU5NTM4MH0.fagTVSCSubt54JxqaJ0Jo05usIWaC6fQadUUdiGMSj8
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMxOTgzODB9.q4G_z3qBTj2h0zdTpX0btI0ioGCDQ9NoQCoyr6T07iQ
