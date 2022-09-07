@@ -16,6 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -100,5 +101,18 @@ class CommentServiceTest {
         UpdateCommentCommand command = new UpdateCommentCommand(comment.getId(), "잘못된 댓글 id", weirdId);
 
         assertThrows(NotFoundException.class, () -> commentService.updateById(command));
+    }
+
+    @Test
+    public void testDeleteById() throws NotFoundException {
+        Long id = comment.getId();
+        commentService.deleteById(id);
+        Optional<Comment> deletedComment = commentRepository.findById(id);
+        assertFalse(deletedComment.isPresent());
+    }
+
+    @Test
+    public void testDeleteByIdFail() {
+        assertThrows(NotFoundException.class, () -> commentService.deleteById(weirdId));
     }
 }

@@ -79,6 +79,12 @@ public class CommentController {
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deletedCommentsById(@PathVariable Long id) throws NotFoundException {
+        commentService.deleteById(id);
+        return new ResponseEntity<>("댓글이 삭제되었습니다", HttpStatus.OK);
+    }
+
 
     private WriterResponseDto getWriterResponse(Member writer) {
         return WriterResponseDto.builder()

@@ -42,4 +42,9 @@ public class CommentService {
         return comment;
     }
 
+    public void deleteById(Long id) throws NotFoundException {
+        commentRepository.findById(id).orElseThrow(() -> new NotFoundException("게시글을 찾을 수 없습니다."));
+        commentRepository.deleteById(id);
+    }
+
 }
