@@ -20,6 +20,14 @@ Content-Type: application/json
   "passwordConfirm":"password123"
 }
 
+########
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "email":"test2@naver.com",
+  "password":"password123"
+}
 
 
 ########
@@ -33,17 +41,19 @@ Content-Type: application/json
 
 ########
 GET http://localhost:8080/api/auth/mypage
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MjU5ODE0N30.zmkO8XmiFMKTbe7OwhPAxORa956IQ26xe_mgeCD1GlU
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMDExNDd9.quHio9Mr8uUx0TBoGRQrgfu5HTHr8Er0_XEwB99TPfk
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MjU5OTI4N30.r8KkqmiBcy85DovpVeZhz_Gf_o55J_tbCPTGbiLzBCk
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMDIyODd9.wV7uEpno95jmgFyu0a43g5LEyQfoMBWzVCiqT-ZKeX4
 
 
 ########
 PUT http://localhost:8080/api/auth/mypage
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MjU5ODE0N30.zmkO8XmiFMKTbe7OwhPAxORa956IQ26xe_mgeCD1GlU
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMDExNDd9.quHio9Mr8uUx0TBoGRQrgfu5HTHr8Er0_XEwB99TPfk
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MjU5OTI4N30.r8KkqmiBcy85DovpVeZhz_Gf_o55J_tbCPTGbiLzBCk
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMDIyODd9.wV7uEpno95jmgFyu0a43g5LEyQfoMBWzVCiqT-ZKeX4
 Content-Type: application/json
 
 {
   "nickname":"test12",
-  "password":"password123"
+  "passwordConfirm":"password123",
+  "newPassword":"password12"
+
 }

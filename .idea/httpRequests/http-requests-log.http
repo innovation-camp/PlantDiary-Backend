@@ -1,4 +1,189 @@
 PUT http://localhost:8080/api/auth/mypage
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MjU5OTI4N30.r8KkqmiBcy85DovpVeZhz_Gf_o55J_tbCPTGbiLzBCk
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMDIyODd9.wV7uEpno95jmgFyu0a43g5LEyQfoMBWzVCiqT-ZKeX4
+Content-Type: application/json
+
+{
+  "nickname":"test12",
+  "passwordConfirm":"password12",
+  "newPassword":"password123"
+
+}
+
+<> 2022-09-08T093932.200.json
+
+###
+
+PUT http://localhost:8080/api/auth/mypage
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MjU5OTI4N30.r8KkqmiBcy85DovpVeZhz_Gf_o55J_tbCPTGbiLzBCk
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMDIyODd9.wV7uEpno95jmgFyu0a43g5LEyQfoMBWzVCiqT-ZKeX4
+Content-Type: application/json
+
+{
+  "nickname":"test12",
+  "passwordConfirm":"password123",
+  "newPassword":"password12"
+
+}
+
+<> 2022-09-08T093926.200.json
+
+###
+
+PUT http://localhost:8080/api/auth/mypage
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MjU5OTI4N30.r8KkqmiBcy85DovpVeZhz_Gf_o55J_tbCPTGbiLzBCk
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMDIyODd9.wV7uEpno95jmgFyu0a43g5LEyQfoMBWzVCiqT-ZKeX4
+Content-Type: application/json
+
+{
+  "nickname":"test12",
+  "passwordConfirm":"password123",
+  "newPassword":"password12"
+
+}
+
+<> 2022-09-08T093920.200.json
+
+###
+
+PUT http://localhost:8080/api/auth/mypage
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MjU5OTI4N30.r8KkqmiBcy85DovpVeZhz_Gf_o55J_tbCPTGbiLzBCk
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMDIyODd9.wV7uEpno95jmgFyu0a43g5LEyQfoMBWzVCiqT-ZKeX4
+Content-Type: application/json
+
+{
+  "nickname":"test13",
+  "passwordConfirm":"password123",
+  "newPassword":"password123"
+
+}
+
+<> 2022-09-08T093913.200.json
+
+###
+
+PUT http://localhost:8080/api/auth/mypage
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MjU5OTI4N30.r8KkqmiBcy85DovpVeZhz_Gf_o55J_tbCPTGbiLzBCk
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMDIyODd9.wV7uEpno95jmgFyu0a43g5LEyQfoMBWzVCiqT-ZKeX4
+Content-Type: application/json
+
+{
+  "nickname":"test13",
+  "passwordConfirm":"password123"
+
+}
+
+<> 2022-09-08T093851.500.json
+
+###
+
+PUT http://localhost:8080/api/auth/mypage
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MjU5OTI4N30.r8KkqmiBcy85DovpVeZhz_Gf_o55J_tbCPTGbiLzBCk
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMDIyODd9.wV7uEpno95jmgFyu0a43g5LEyQfoMBWzVCiqT-ZKeX4
+Content-Type: application/json
+
+{
+  "nickname":"test13"
+
+}
+
+<> 2022-09-08T093819.500.json
+
+###
+
+GET http://localhost:8080/api/auth/mypage
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MjU5OTI4N30.r8KkqmiBcy85DovpVeZhz_Gf_o55J_tbCPTGbiLzBCk
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMDIyODd9.wV7uEpno95jmgFyu0a43g5LEyQfoMBWzVCiqT-ZKeX4
+
+<> 2022-09-08T093813.200.json
+
+###
+
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "email":"test1@naver.com",
+  "password":"password123"
+}
+
+<> 2022-09-08T093807.200.json
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "nickname":"test2",
+  "email":"test2@naver.com",
+  "password":"password123",
+  "passwordConfirm":"password123"
+}
+
+<> 2022-09-08T093803.200.json
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "nickname":"test1",
+  "email":"test1@naver.com",
+  "password":"password123",
+  "passwordConfirm":"password123"
+}
+
+<> 2022-09-08T093759.200.json
+
+###
+
+PUT http://localhost:8080/api/auth/mypage
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MjU5ODE0N30.zmkO8XmiFMKTbe7OwhPAxORa956IQ26xe_mgeCD1GlU
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMDExNDd9.quHio9Mr8uUx0TBoGRQrgfu5HTHr8Er0_XEwB99TPfk
+Content-Type: application/json
+
+{
+  "nickname":"test13"
+
+}
+
+<> 2022-09-08T092136.500.json
+
+###
+
+PUT http://localhost:8080/api/auth/mypage
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MjU5ODE0N30.zmkO8XmiFMKTbe7OwhPAxORa956IQ26xe_mgeCD1GlU
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMDExNDd9.quHio9Mr8uUx0TBoGRQrgfu5HTHr8Er0_XEwB99TPfk
+Content-Type: application/json
+
+{
+  "nickname":"test12",
+  "password":"password124",
+  "passwordConfirm":"password124"
+}
+
+<> 2022-09-08T092115.200.json
+
+###
+
+PUT http://localhost:8080/api/auth/mypage
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MjU5ODE0N30.zmkO8XmiFMKTbe7OwhPAxORa956IQ26xe_mgeCD1GlU
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMDExNDd9.quHio9Mr8uUx0TBoGRQrgfu5HTHr8Er0_XEwB99TPfk
+Content-Type: application/json
+
+{
+  "nickname":"test12",
+  "password":"password123",
+  "passwordConfirm":"password123"
+}
+
+<> 2022-09-08T092102.200.json
+
+###
+
+PUT http://localhost:8080/api/auth/mypage
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MjU5ODE0N30.zmkO8XmiFMKTbe7OwhPAxORa956IQ26xe_mgeCD1GlU
 Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMDExNDd9.quHio9Mr8uUx0TBoGRQrgfu5HTHr8Er0_XEwB99TPfk
 Content-Type: application/json
@@ -409,170 +594,6 @@ Content-Type: application/json
 }
 
 <> 2022-08-31T162325.200.json
-
-###
-
-POST http://localhost:8080/api/member/login
-Content-Type: application/json
-
-{
-  "nickname":"kiyeon",
-  "password":"1234"
-}
-
-<> 2022-08-31T162304.200.json
-
-###
-
-POST http://localhost:8080/api/member/signup
-Content-Type: application/json
-
-{
-  "nickname":"seonghee",
-  "password":"1234",
-  "passwordConfirm":"1234"
-}
-
-<> 2022-08-31T162302.200.json
-
-###
-
-POST http://localhost:8080/api/member/signup
-Content-Type: application/json
-
-{
-  "nickname":"kiyeon",
-  "password":"1234",
-  "passwordConfirm":"1234"
-}
-
-<> 2022-08-31T162245.200.json
-
-###
-
-POST http://localhost:8080/api/member/login
-Content-Type: application/json
-
-{
-  "nickname":"kiyeon",
-  "password":"1234"
-}
-
-<> 2022-08-31T080517.200.json
-
-###
-
-POST http://localhost:8080/api/member/signup
-Content-Type: application/json
-
-{
-  "nickname":"kiyeon",
-  "password":"1234",
-  "passwordConfirm":"1234"
-}
-
-<> 2022-08-31T080513.200.json
-
-###
-
-POST http://localhost:8080/api/member/login
-Content-Type: application/json
-
-{
-  "nickname":"kiyeon",
-  "password":"1234"
-}
-
-<> 2022-08-31T075518.200.json
-
-###
-
-POST http://localhost:8080/api/member/signup
-Content-Type: application/json
-
-{
-  "nickname":"kiyeon",
-  "password":"1234",
-  "passwordConfirm":"1234"
-}
-
-<> 2022-08-31T075514.200.json
-
-###
-
-POST http://localhost:8080/api/member/login
-Content-Type: application/json
-
-{
-  "nickname":"kiyeon",
-  "password":"1234"
-}
-
-<> 2022-08-31T073406.200.json
-
-###
-
-POST http://localhost:8080/api/member/signup
-Content-Type: application/json
-
-{
-  "nickname":"kiyeon",
-  "password":"1234",
-  "passwordConfirm":"1234"
-}
-
-<> 2022-08-31T073402.200.json
-
-###
-
-POST http://localhost:8080/api/member/login
-Content-Type: application/json
-
-{
-  "nickname":"kiyeon",
-  "password":"1234"
-}
-
-<> 2022-08-31T073129.200.json
-
-###
-
-POST http://localhost:8080/api/member/signup
-Content-Type: application/json
-
-{
-  "nickname":"kiyeon",
-  "password":"1234",
-  "passwordConfirm":"1234"
-}
-
-<> 2022-08-31T073124.200.json
-
-###
-
-POST http://localhost:8080/api/auth/post
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraXllb24iLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJleHAiOjE2NjE5MDAzMzd9.1D5Anih1ILuMTZpZBI1EraX3YWJ0vDg_G0_1iaSeUP0
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjI1MDMzMzd9.YBJ8rgzLjrL8vF2USAcCfjDQRcmnv33B3oanPbMp_Mo
-Content-Type: application/json
-
-{
-  "title":"게시글 test1",
-  "content":"회원1의 게시글 내용 1"
-}
-
-<> 2022-08-31T072907.500.json
-
-###
-
-POST http://localhost:8080/api/member/login
-Content-Type: application/json
-
-{
-  "nickname":"kiyeon",
-  "password":"1234"
-}
-
-<> 2022-08-31T072858.200.json
 
 ###
 

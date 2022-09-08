@@ -142,12 +142,15 @@ public class MemberService {
     if (null == member) {
       return ResponseDto.fail("INVALID_TOKEN", "Token이 유효하지 않습니다.");
     }
-    //비밀번호 확인해야함
+
+    //비밀번호 바꾸고 싶을 때만 확인해야함
     if(!member.validatePassword(passwordEncoder,requestDto.getPasswordConfirm())){
       return ResponseDto.fail("INVALID_PASSWORD", "비밀번호가 일치하지 않습니다.");
     }
-
-    member.update(requestDto);
+    // TODO: update해도 비밀번호 수정 안 되는 오류 발생
+    // TODO: 비밀번호 수정 안 하고 싶을 때 핸들링 필요
+    member.updatePassword(passwordEncoder.encode(requestDto.getNewPassword()));
+    member.updateNickname(requestDto);
 
     return ResponseDto.success(member);
   }

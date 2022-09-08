@@ -36,9 +36,15 @@ public class Member extends Timestamped {
   @JsonIgnore
   private String password;
 
-  public void update(MypageRequestDto requestDto){
-    this.nickname = requestDto.getNickname();
-    this.password = requestDto.getPassword();
+  public void updateNickname(MypageRequestDto requestDto){
+    if(!(""==requestDto.getNickname())){
+      this.nickname = requestDto.getNickname();
+    }
+  }
+  public void updatePassword(String pw){
+    if(!(""==pw)) {
+      this.password = pw;
+    }
   }
 
   @Override

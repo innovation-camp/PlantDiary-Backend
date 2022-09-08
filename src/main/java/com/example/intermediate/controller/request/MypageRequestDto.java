@@ -20,7 +20,7 @@ import javax.validation.constraints.Size;
 
         @Size(min = 4, max = 32)
         @Pattern(regexp = "[a-z\\d]*${3,32}")
-        private String password;
+        private String newPassword;
 
         private String passwordConfirm;
     }
