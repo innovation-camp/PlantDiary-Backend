@@ -12,14 +12,9 @@
       <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/intermediate/controller/request/MypageRequestDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/intermediate/controller/request/MypageRequestDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/intermediate/domain/Member.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/intermediate/domain/Member.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/intermediate/service/MemberService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/intermediate/service/MemberService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/intermediate/controller/MemberController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/intermediate/controller/MemberController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/intermediate/controller/request/MypageRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/intermediate/controller/request/MypageRequestDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/intermediate/domain/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/intermediate/domain/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/intermediate/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/intermediate/service/MemberService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/intermediate/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/intermediate/controller/MemberController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/intermediate/test.http" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/intermediate/test.http" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -104,10 +99,10 @@
     <configuration name="test | ########## 회원가입2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/main/java/com/example/intermediate/test.http" index="2" requestIdentifier="########## 회원가입2" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="test | ###########2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/main/java/com/example/intermediate/test.http" index="4" requestIdentifier="###########2" runType="Run single request">
+    <configuration name="test | ########## 중복확인#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/main/java/com/example/intermediate/test.http" index="3" requestIdentifier="########## 중복확인#1" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="test | ###########3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/main/java/com/example/intermediate/test.http" index="5" requestIdentifier="###########3" runType="Run single request">
+    <configuration name="test | ########## 중복확인#2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/main/java/com/example/intermediate/test.http" index="4" requestIdentifier="########## 중복확인#2" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="test | ###########4" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/main/java/com/example/intermediate/test.http" index="6" requestIdentifier="###########4" runType="Run single request">
@@ -122,20 +117,20 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="HTTP Request.test | ########## 중복확인#1" />
+      <item itemvalue="HTTP Request.test | ########## 중복확인#2" />
       <item itemvalue="HTTP Request.test | ###########4" />
       <item itemvalue="HTTP Request.test | ########## 회원가입1" />
       <item itemvalue="HTTP Request.test | ########## 회원가입2" />
-      <item itemvalue="HTTP Request.test | ###########2" />
-      <item itemvalue="HTTP Request.test | ###########3" />
       <item itemvalue="Spring Boot.IntermediateApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="HTTP Request.test | ###########4" />
-        <item itemvalue="HTTP Request.test | ###########3" />
-        <item itemvalue="HTTP Request.test | ###########2" />
+        <item itemvalue="HTTP Request.test | ########## 중복확인#1" />
+        <item itemvalue="HTTP Request.test | ########## 중복확인#2" />
         <item itemvalue="HTTP Request.test | ########## 회원가입2" />
         <item itemvalue="HTTP Request.test | ########## 회원가입1" />
+        <item itemvalue="HTTP Request.test | ###########4" />
       </list>
     </recent_temporary>
   </component>
@@ -156,7 +151,7 @@
       <workItem from="1661932331953" duration="14940000" />
       <workItem from="1662443054952" duration="5641000" />
       <workItem from="1662455936279" duration="9998000" />
-      <workItem from="1662595915556" duration="1720000" />
+      <workItem from="1662595915556" duration="2030000" />
     </task>
     <servers />
   </component>

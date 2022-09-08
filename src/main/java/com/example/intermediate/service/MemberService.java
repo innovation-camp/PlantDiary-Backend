@@ -165,7 +165,7 @@ public class MemberService {
   }
 
   public ResponseDto<?> nicknameCheak(NicknameRequestDto requestDto){
-    if(null != isPresentMemberByEmail(requestDto.getNickname())){
+    if(null != isPresentMemberByNickname(requestDto.getNickname())){
       return ResponseDto.fail("DUPLICATED_EMAIL","중복된 닉네임입니다.");
     }
     return ResponseDto.success("사용가능한 닉네임입니다.");
