@@ -1,3 +1,14 @@
+POST http://localhost:8080/api/auth/email
+Content-Type: application/json
+
+{
+  "email":"test3@naver.com"
+}
+
+<> 2022-09-08T140046.200.json
+
+###
+
 PUT http://localhost:8080/api/auth/mypage
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MjYwMjkyNn0.3m2ijPWPRlXgKptX4NdeBx7_pGcQ4aWXtmsGWo7VOC8
 Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMDU5MjZ9.Jy192pQbc9PrmArmFF2QjkmZMo9MiWP4mnC6jzVFle0
@@ -616,20 +627,6 @@ Content-Type: application/json
 }
 
 <> 2022-09-08T090708.200.json
-
-###
-
-PUT http://localhost:8080/api/auth/mypage
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MjU5NzQwNH0.tVrQ7bEVCNbyhQcFhg77nL3nazNfixJWEXIdr_7dh4s
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMDA0MDR9.bV2aeWFgWMwgwyvYHLVy4inaaXhQALSYbBVW90AgDSQ
-Content-Type: application/json
-
-{
-  "nickname":"test1-1",
-  "password":"password123"
-}
-
-<> 2022-09-08T090700.200.json
 
 ###
 

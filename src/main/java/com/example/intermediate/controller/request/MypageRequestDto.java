@@ -15,7 +15,7 @@ import javax.validation.constraints.Size;
     public class MypageRequestDto {
 
         @Size(min = 4, max = 12)
-        @Pattern(regexp = "[a-zA-Z\\d]*${3,12}")
+        @Pattern(regexp = "^[가-힣]*$")
         private String nickname;
 
         @Size(min = 4, max = 32)
