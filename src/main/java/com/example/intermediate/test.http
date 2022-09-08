@@ -20,6 +20,23 @@ Content-Type: application/json
   "passwordConfirm":"password123"
 }
 
+######## 중복확인
+POST http://localhost:8080/api/auth/nickname
+Content-Type: application/json
+
+{
+  "nickname":"test2"
+}
+
+######## 중복확인
+POST http://localhost:8080/api/auth/email
+Content-Type: application/json
+
+{
+  "email":"test2@naver.com"
+}
+
+
 ########
 POST http://localhost:8080/api/auth/login
 Content-Type: application/json

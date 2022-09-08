@@ -43,13 +43,13 @@ public class MemberController {
     }
 
   //이메일 중복확인
-  @RequestMapping(value = "/api/auth/email", method = RequestMethod.GET)
+  @RequestMapping(value = "/api/auth/email", method = RequestMethod.POST)
   public ResponseDto<?> emailCheak(@RequestBody @Valid EmailRequestDto requestDto) {
     return memberService.emailCheak(requestDto);
   }
 
   //닉네임 중복확인
-  @RequestMapping(value = "/api/auth/nickname", method = RequestMethod.GET)
+  @RequestMapping(value = "/api/auth/nickname", method = RequestMethod.POST)
   public ResponseDto<?> nicknameCheak(@RequestBody @Valid NicknameRequestDto requestDto) {
     return memberService.nicknameCheak(requestDto);
   }
