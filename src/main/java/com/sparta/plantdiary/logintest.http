@@ -1,0 +1,75 @@
+######## 회원가입1
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "nickname":"회원이",
+  "email":"test2@naver.com",
+  "password":"password123",
+  "passwordConfirm":"password123"
+}
+
+######## 회원가입2
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "nickname":"회원삼",
+  "email":"test3@naver.com",
+  "password":"password123",
+  "passwordConfirm":"password123"
+}
+
+######## 중복확인
+POST http://localhost:8080/api/auth/nickname
+Content-Type: application/json
+
+{
+  "nickname":"회원사"
+}
+
+######## 중복확인
+POST http://localhost:8080/api/auth/email
+Content-Type: application/json
+
+{
+  "email":"test@naver.com"
+}
+
+
+########로그인1
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "email":"test1@naver.com",
+  "password":"password123"
+}
+
+
+########로그인2
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "email":"test2@naver.com",
+  "password":"password123"
+}
+
+########회원정보조회
+GET http://localhost:8080/api/auth/mypage
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiLtmozsm5DsnbwiLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJleHAiOjE2NjI2MTkxMzJ9.fN_d3Vic8fXxSkldVGMrhE4pbcdtZKIXX1vMR__Q_sA
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMjIxMzJ9.3wc9xQBYtLdfUL0cBLOyIx__0EBPWY0kOhiW_X_BB-A
+
+
+########회원정보수정
+PUT http://localhost:8080/api/auth/mypage
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiLtmozsm5DsnbwiLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJleHAiOjE2NjI2MTkxMzJ9.fN_d3Vic8fXxSkldVGMrhE4pbcdtZKIXX1vMR__Q_sA
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMjIxMzJ9.3wc9xQBYtLdfUL0cBLOyIx__0EBPWY0kOhiW_X_BB-A
+Content-Type: application/json
+
+{
+  "nickname":"회원일이",
+  "passwordConfirm":"password123",
+  "newPassword":"password123"
+}
