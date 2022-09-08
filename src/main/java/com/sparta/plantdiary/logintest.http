@@ -42,7 +42,7 @@ POST http://localhost:8080/api/auth/login
 Content-Type: application/json
 
 {
-  "email":"test1@naver.com",
+  "email":"test2@naver.com",
   "password":"password123"
 }
 
@@ -53,23 +53,23 @@ Content-Type: application/json
 
 {
   "email":"test2@naver.com",
-  "password":"password123"
+  "password":"password12"
 }
 
 ########회원정보조회
 GET http://localhost:8080/api/auth/mypage
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiLtmozsm5DsnbwiLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJleHAiOjE2NjI2MTkxMzJ9.fN_d3Vic8fXxSkldVGMrhE4pbcdtZKIXX1vMR__Q_sA
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMjIxMzJ9.3wc9xQBYtLdfUL0cBLOyIx__0EBPWY0kOhiW_X_BB-A
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiLtmozsm5DsnbQiLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJleHAiOjE2NjI2MjI4MTJ9.FDH0jZjABoIDbmlhqVyufrIvS26RejKvYuGH5ksSFRU
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMjU4MTJ9.N2Vtvj_Wg2fvMgzifTYl_qiw-rotePOtdKCE94YDxgs
 
 
 ########회원정보수정
 PUT http://localhost:8080/api/auth/mypage
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiLtmozsm5DsnbwiLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJleHAiOjE2NjI2MTkxMzJ9.fN_d3Vic8fXxSkldVGMrhE4pbcdtZKIXX1vMR__Q_sA
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMjIxMzJ9.3wc9xQBYtLdfUL0cBLOyIx__0EBPWY0kOhiW_X_BB-A
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiLtmozsm5DsnbQiLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJleHAiOjE2NjI2MjI4MTJ9.FDH0jZjABoIDbmlhqVyufrIvS26RejKvYuGH5ksSFRU
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMjU4MTJ9.N2Vtvj_Wg2fvMgzifTYl_qiw-rotePOtdKCE94YDxgs
 Content-Type: application/json
 
 {
   "nickname":"회원일이",
-  "passwordConfirm":"password123",
-  "newPassword":"password123"
+  "passwordConfirm":"password12",
+  "newPassword":"password12"
 }

@@ -44,9 +44,7 @@ public class Member extends TimeStamped {
         }
     }
     public void updatePassword(String pw){
-        if(!(""==pw)) {
-            this.password = pw;
-        }
+        this.password = pw;
     }
 
     public boolean validatePassword(PasswordEncoder passwordEncoder, String password) {
