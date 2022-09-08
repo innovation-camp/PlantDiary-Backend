@@ -2,11 +2,10 @@ package com.example.intermediate.service;
 
 import com.example.intermediate.controller.request.*;
 import com.example.intermediate.controller.response.*;
-import com.example.intermediate.repository.domain.Member;
+import com.example.intermediate.domain.Member;
 import com.example.intermediate.jwt.TokenProvider;
 import com.example.intermediate.repository.MemberRepository;
 
-import java.util.List;
 import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -68,7 +67,7 @@ public class MemberService {
     }
 
     if (!member.validatePassword(passwordEncoder, requestDto.getPassword())) {
-      return ResponseDto.fail("INVALID_MEMBER", "사용자를 찾을 수 없습니다.");
+      return ResponseDto.fail("INVALID_MEMBER", "비밀번호가 일치하지 않습니다.");
     }
 
 
@@ -121,6 +120,8 @@ public class MemberService {
                     .id(member.getId())
                     .nickname(member.getNickname())
                     .email(member.getEmail())
+                    .createdAt(member.getCreatedAt())
+                    .modifiedAt(member.getModifiedAt())
                     .build()
     );
   }
@@ -142,6 +143,10 @@ public class MemberService {
       return ResponseDto.fail("INVALID_TOKEN", "Token이 유효하지 않습니다.");
     }
     //비밀번호 확인해야함
+    if(!member.validatePassword(passwordEncoder,requestDto.getPasswordConfirm())){
+      return ResponseDto.fail("INVALID_PASSWORD", "비밀번호가 일치하지 않습니다.");
+    }
+
     member.update(requestDto);
 
     return ResponseDto.success(member);

@@ -1,4 +1,4 @@
-package com.example.intermediate.repository.domain;
+package com.example.intermediate.domain;
 
 import java.time.LocalDateTime;
 import javax.persistence.EntityListeners;

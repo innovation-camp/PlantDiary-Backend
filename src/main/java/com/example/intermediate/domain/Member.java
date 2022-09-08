@@ -1,4 +1,4 @@
-package com.example.intermediate.repository.domain;
+package com.example.intermediate.domain;
 
 import com.example.intermediate.controller.request.MypageRequestDto;
 import com.fasterxml.jackson.annotation.JsonIgnore;

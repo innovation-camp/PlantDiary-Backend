@@ -1,7 +1,7 @@
 package com.example.intermediate.service;
 
-import com.example.intermediate.repository.domain.Member;
-import com.example.intermediate.repository.domain.UserDetailsImpl;
+import com.example.intermediate.domain.Member;
+import com.example.intermediate.domain.UserDetailsImpl;
 import com.example.intermediate.repository.MemberRepository;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;

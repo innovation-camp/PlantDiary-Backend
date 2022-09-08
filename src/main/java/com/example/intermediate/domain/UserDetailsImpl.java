@@ -1,4 +1,4 @@
-package com.example.intermediate.repository.domain;
+package com.example.intermediate.domain;
 
 import com.example.intermediate.shared.Authority;
 import java.util.ArrayList;

@@ -1,8 +1,8 @@
 package com.example.intermediate.jwt;
 
-import com.example.intermediate.repository.domain.Member;
-import com.example.intermediate.repository.domain.RefreshToken;
-import com.example.intermediate.repository.domain.UserDetailsImpl;
+import com.example.intermediate.domain.Member;
+import com.example.intermediate.domain.RefreshToken;
+import com.example.intermediate.domain.UserDetailsImpl;
 import com.example.intermediate.controller.response.ResponseDto;
 import com.example.intermediate.controller.request.TokenDto;
 import com.example.intermediate.repository.RefreshTokenRepository;

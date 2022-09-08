@@ -33,14 +33,14 @@ Content-Type: application/json
 
 ########
 GET http://localhost:8080/api/auth/mypage
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MjU5NzQwNH0.tVrQ7bEVCNbyhQcFhg77nL3nazNfixJWEXIdr_7dh4s
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMDA0MDR9.bV2aeWFgWMwgwyvYHLVy4inaaXhQALSYbBVW90AgDSQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MjU5ODE0N30.zmkO8XmiFMKTbe7OwhPAxORa956IQ26xe_mgeCD1GlU
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMDExNDd9.quHio9Mr8uUx0TBoGRQrgfu5HTHr8Er0_XEwB99TPfk
 
 
 ########
 PUT http://localhost:8080/api/auth/mypage
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MjU5NzQwNH0.tVrQ7bEVCNbyhQcFhg77nL3nazNfixJWEXIdr_7dh4s
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMDA0MDR9.bV2aeWFgWMwgwyvYHLVy4inaaXhQALSYbBVW90AgDSQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MjU5ODE0N30.zmkO8XmiFMKTbe7OwhPAxORa956IQ26xe_mgeCD1GlU
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMDExNDd9.quHio9Mr8uUx0TBoGRQrgfu5HTHr8Er0_XEwB99TPfk
 Content-Type: application/json
 
 {
