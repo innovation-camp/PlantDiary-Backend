@@ -13,6 +13,12 @@
 
 <img width="661" alt="Screen Shot 2022-09-08 at 7 20 59 PM" src="https://user-images.githubusercontent.com/60090391/189098421-1d6fc6a7-eccc-4c9c-905d-c7e9c4c805ea.png">
 
+## 🤟 Swagger Address 🤟
+
+```
+{BASE_URL}/swagger-ui.html
+```
+
 ---
 
 ## 👩🏻‍💻 Contributors 🧑🏻‍💻
