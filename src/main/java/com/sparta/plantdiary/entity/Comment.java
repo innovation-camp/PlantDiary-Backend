@@ -1,9 +1,6 @@
 package com.sparta.plantdiary.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
@@ -11,6 +8,7 @@ import javax.persistence.*;
 
 @Builder
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -32,4 +30,10 @@ public class Comment extends TimeStamped{
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id")
     private Post post;
+
+    public Comment(String content, Member writer, Post post) {
+        this.content = content;
+        this.writer = writer;
+        this.post = post;
+    }
 }
