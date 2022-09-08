@@ -1,11 +1,13 @@
 package com.sparta.plantdiary.entity;
 
+import com.sparta.plantdiary.dto.MypageRequestDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 
@@ -35,4 +37,19 @@ public class Member extends TimeStamped {
         this.email = email;
         this.password = password;
     };
+
+    public void updateNickname(MypageRequestDto requestDto){
+        if(!(""==requestDto.getNickname())){
+            this.nickname = requestDto.getNickname();
+        }
+    }
+    public void updatePassword(String pw){
+        if(!(""==pw)) {
+            this.password = pw;
+        }
+    }
+
+    public boolean validatePassword(PasswordEncoder passwordEncoder, String password) {
+        return passwordEncoder.matches(password, this.password);
+    }
 }

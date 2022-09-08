@@ -4,8 +4,7 @@ import com.sparta.plantdiary.dto.ResponseDto;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-public class NotFoundException extends Exception{
-
+public class ForbiddenException extends Exception{
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseDto<?> handleValidationExceptions(MethodArgumentNotValidException exception) {
         String errorMessage = exception.getBindingResult()
@@ -13,10 +12,10 @@ public class NotFoundException extends Exception{
                 .get(0)
                 .getDefaultMessage();
 
-        return ResponseDto.fail("BAD_REQUEST", errorMessage);
+        return ResponseDto.fail("FORBIDDEN", errorMessage);
     }
 
-    public NotFoundException(String s) {
+    public ForbiddenException(String s) {
         super(s);
     }
 }

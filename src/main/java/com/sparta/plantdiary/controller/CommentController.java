@@ -8,8 +8,9 @@ import com.sparta.plantdiary.dto.CommentResponse;
 import com.sparta.plantdiary.dto.WriterResponseDto;
 import com.sparta.plantdiary.entity.Comment;
 import com.sparta.plantdiary.entity.Member;
+import com.sparta.plantdiary.error.ForbiddenException;
 import com.sparta.plantdiary.error.NotFoundException;
-import com.sparta.plantdiary.repository.MemberRepository;
+import com.sparta.plantdiary.jwt.TokenProvider;
 import com.sparta.plantdiary.service.CommentService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -34,7 +35,7 @@ import java.util.List;
 public class CommentController {
 
     public final CommentService commentService;
-    public final MemberRepository memberRepository;
+    public final TokenProvider tokenProvider;
 
 
     @Operation(summary = "create comment", description = "댓글 생성하기")
@@ -42,12 +43,7 @@ public class CommentController {
     @ResponseBody
     @PostMapping("")
     public ResponseEntity<CommentResponse> createComment(@RequestBody @Valid CommentRequest request) throws NotFoundException {
-        /**
-         * TODO: 인증 기능 개발 후 삭제할 것
-         * 아직 인증 기능이 개발되지 않아서 임시로 작성자 데이터를 만들었음.
-         */
-        Member writer = new Member("버블티", "bubble@bubble.com", "password");
-        memberRepository.save(writer);
+        Member writer = tokenProvider.getMemberFromAuthentication();
 
         CreateCommentCommand command = new CreateCommentCommand(request.getContent(), writer, request.getPostId());
 
@@ -82,7 +78,7 @@ public class CommentController {
     @ApiResponse(responseCode = "200", description = "OK", content = @Content(schema = @Schema(implementation = CommentResponse.class)))
     @ResponseBody
     @PutMapping("/{id}")
-    public ResponseEntity<CommentResponse> updateCommentById(@PathVariable Long id, @RequestBody @Valid CommentRequest request) throws NotFoundException {
+    public ResponseEntity<CommentResponse> updateCommentById(@PathVariable Long id, @RequestBody @Valid CommentRequest request) throws NotFoundException, ForbiddenException {
 
         UpdateCommentCommand command = new UpdateCommentCommand(id, request.getContent(), request.getPostId());
 
@@ -97,7 +93,7 @@ public class CommentController {
     @Operation(summary = "delete comment", description = "댓글 삭제하기")
     @ResponseBody
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deletedCommentsById(@PathVariable Long id) throws NotFoundException {
+    public ResponseEntity<String> deletedCommentsById(@PathVariable Long id) throws NotFoundException, ForbiddenException {
         commentService.deleteById(id);
         return new ResponseEntity<>("댓글이 삭제되었습니다", HttpStatus.OK);
     }

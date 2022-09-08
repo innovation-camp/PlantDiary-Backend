@@ -3,7 +3,9 @@ package com.sparta.plantdiary.service;
 import com.sparta.plantdiary.command.CreatePostCommand;
 import com.sparta.plantdiary.command.UpdatePostCommand;
 import com.sparta.plantdiary.entity.Post;
+import com.sparta.plantdiary.error.ForbiddenException;
 import com.sparta.plantdiary.error.NotFoundException;
+import com.sparta.plantdiary.jwt.TokenProvider;
 import com.sparta.plantdiary.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,7 @@ import java.util.List;
 public class PostService {
 
     private final PostRepository postRepository;
+    private final TokenProvider tokenProvider;
 
     public Post create(CreatePostCommand command) {
         Post post = new Post(command.getTitle(), command.getContent(), command.getThumbnail(), command.getWriter());
@@ -30,13 +33,23 @@ public class PostService {
         return post;
     }
 
-    public void deleteById(Long id) throws NotFoundException {
-        postRepository.get(id).orElseThrow(() -> new NotFoundException("게시글을 찾을 수 없습니다."));
+    public void deleteById(Long id) throws NotFoundException, ForbiddenException {
+        Post post = postRepository.get(id).orElseThrow(() -> new NotFoundException("게시글을 찾을 수 없습니다."));
+
+        if (post.getWriter().getId() != tokenProvider.getMemberFromAuthentication().getId()) {
+            throw new ForbiddenException("접근할 수 없습니다.");
+        }
+
         postRepository.deleteById(id);
     }
 
-    public Post updateById(UpdatePostCommand command) throws NotFoundException {
+    public Post updateById(UpdatePostCommand command) throws NotFoundException, ForbiddenException {
         Post post = postRepository.get(command.getId()).orElseThrow(() -> new NotFoundException("게시글을 찾을 수 없습니다."));
+
+        if (post.getWriter().getId() != tokenProvider.getMemberFromAuthentication().getId()) {
+            throw new ForbiddenException("접근할 수 없습니다.");
+        }
+
         post.setTitle(command.getTitle());
         post.setContent(command.getContent());
         post.setThumbnail(command.getThumbnail());
