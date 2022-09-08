@@ -1,3 +1,257 @@
+PUT http://localhost:8080/api/auth/mypage
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MjYwMjkyNn0.3m2ijPWPRlXgKptX4NdeBx7_pGcQ4aWXtmsGWo7VOC8
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMDU5MjZ9.Jy192pQbc9PrmArmFF2QjkmZMo9MiWP4mnC6jzVFle0
+Content-Type: application/json
+
+{
+  "nickname":"test12",
+  "passwordConfirm":"password123",
+  "newPassword":"password123"
+
+}
+
+<> 2022-09-08T104014.200.json
+
+###
+
+GET http://localhost:8080/api/auth/mypage
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MjYwMjkyNn0.3m2ijPWPRlXgKptX4NdeBx7_pGcQ4aWXtmsGWo7VOC8
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMDU5MjZ9.Jy192pQbc9PrmArmFF2QjkmZMo9MiWP4mnC6jzVFle0
+
+<> 2022-09-08T103953.200.json
+
+###
+
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "email":"test1@naver.com",
+  "password":"password123"
+}
+
+<> 2022-09-08T103846.200.json
+
+###
+
+POST http://localhost:8080/api/auth/email
+Content-Type: application/json
+
+{
+  "email":"test3@naver.com"
+}
+
+<> 2022-09-08T103842.200.json
+
+###
+
+POST http://localhost:8080/api/auth/email
+Content-Type: application/json
+
+{
+  "email":"test3@naver.com"
+}
+
+<> 2022-09-08T103839.200.json
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "nickname":"test1",
+  "email":"test1@naver.com",
+  "password":"password123",
+  "passwordConfirm":"password123"
+}
+
+<> 2022-09-08T103836.200.json
+
+###
+
+GET http://localhost:8080/api/auth/mypage
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MjU5OTI4N30.r8KkqmiBcy85DovpVeZhz_Gf_o55J_tbCPTGbiLzBCk
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMDIyODd9.wV7uEpno95jmgFyu0a43g5LEyQfoMBWzVCiqT-ZKeX4
+
+<> 2022-09-08T095247.200.json
+
+###
+
+PUT http://localhost:8080/api/auth/mypage
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MjU5OTI4N30.r8KkqmiBcy85DovpVeZhz_Gf_o55J_tbCPTGbiLzBCk
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMDIyODd9.wV7uEpno95jmgFyu0a43g5LEyQfoMBWzVCiqT-ZKeX4
+Content-Type: application/json
+
+{
+  "nickname":"test12",
+  "passwordConfirm":"password123",
+  "newPassword":"password12"
+
+}
+
+<> 2022-09-08T095131.200.json
+
+###
+
+POST http://localhost:8080/api/auth/email
+Content-Type: application/json
+
+{
+  "email":"test3@naver.com"
+}
+
+<> 2022-09-08T094909.200.json
+
+###
+
+POST http://localhost:8080/api/auth/email
+Content-Type: application/json
+
+{
+  "email":"test3@naver.com"
+}
+
+<> 2022-09-08T094907.200.json
+
+###
+
+POST http://localhost:8080/api/auth/nickname
+Content-Type: application/json
+
+{
+  "nickname":"test2"
+}
+
+<> 2022-09-08T094833.200.json
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "nickname":"test2",
+  "email":"test2@naver.com",
+  "password":"password123",
+  "passwordConfirm":"password123"
+}
+
+<> 2022-09-08T094830.200.json
+
+###
+
+POST http://localhost:8080/api/auth/nickname
+Content-Type: application/json
+
+{
+  "nickname":"test2"
+}
+
+<> 2022-09-08T094828.200.json
+
+###
+
+POST http://localhost:8080/api/auth/nickname
+Content-Type: application/json
+
+{
+  "nickname":"test2"
+}
+
+<> 2022-09-08T094826.200.json
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "nickname":"test1",
+  "email":"test1@naver.com",
+  "password":"password123",
+  "passwordConfirm":"password123"
+}
+
+<> 2022-09-08T094821.200.json
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "nickname":"test2",
+  "email":"test2@naver.com",
+  "password":"password123",
+  "passwordConfirm":"password123"
+}
+
+<> 2022-09-08T094807.200.json
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "nickname":"test2",
+  "email":"test2@naver.com",
+  "password":"password123",
+  "passwordConfirm":"password123"
+}
+
+<> 2022-09-08T094806.200.json
+
+###
+
+POST http://localhost:8080/api/auth/nickname
+Content-Type: application/json
+
+{
+  "nickname":"test2"
+}
+
+<> 2022-09-08T094804.200.json
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "nickname":"test2",
+  "email":"test2@naver.com",
+  "password":"password123",
+  "passwordConfirm":"password123"
+}
+
+<> 2022-09-08T094801.200.json
+
+###
+
+POST http://localhost:8080/api/auth/nickname
+Content-Type: application/json
+
+{
+  "nickname":"test2"
+}
+
+<> 2022-09-08T094634.200.json
+
+###
+
+POST http://localhost:8080/api/auth/nickname
+Content-Type: application/json
+
+{
+  "nickname":"test2"
+}
+
+<> 2022-09-08T094632.200.json
+
+###
+
 POST http://localhost:8080/api/auth/email
 Content-Type: application/json
 
@@ -376,212 +630,6 @@ Content-Type: application/json
 }
 
 <> 2022-09-08T090700.200.json
-
-###
-
-GET http://localhost:8080/api/auth/mypage
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MjU5NzQwNH0.tVrQ7bEVCNbyhQcFhg77nL3nazNfixJWEXIdr_7dh4s
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMDA0MDR9.bV2aeWFgWMwgwyvYHLVy4inaaXhQALSYbBVW90AgDSQ
-
-<> 2022-09-08T090652.200.json
-
-###
-
-POST http://localhost:8080/api/auth/login
-Content-Type: application/json
-
-{
-  "email":"test1@naver.com",
-  "password":"password123"
-}
-
-<> 2022-09-08T090644.200.json
-
-###
-
-POST http://localhost:8080/api/auth/register
-Content-Type: application/json
-
-{
-  "nickname":"test2",
-  "email":"test2@naver.com",
-  "password":"password123",
-  "passwordConfirm":"password123"
-}
-
-<> 2022-09-08T090641.200.json
-
-###
-
-POST http://localhost:8080/api/auth/register
-Content-Type: application/json
-
-{
-  "nickname":"test1",
-  "email":"test1@naver.com",
-  "password":"password123",
-  "passwordConfirm":"password123"
-}
-
-<> 2022-09-08T090637.200.json
-
-###
-
-GET http://localhost:8080/api/auth/mypage
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MjU5NTM4MH0.fagTVSCSubt54JxqaJ0Jo05usIWaC6fQadUUdiGMSj8
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMxOTgzODB9.q4G_z3qBTj2h0zdTpX0btI0ioGCDQ9NoQCoyr6T07iQ
-
-<> 2022-09-08T083310.404.json
-
-###
-
-POST http://localhost:8080/api/auth/login
-Content-Type: application/json
-
-{
-  "email":"test1@naver.com",
-  "password":"password123"
-}
-
-<> 2022-09-08T083301.200.json
-
-###
-
-POST http://localhost:8080/api/auth/register
-Content-Type: application/json
-
-{
-  "nickname":"test2",
-  "email":"test2@naver.com",
-  "password":"password123",
-  "passwordConfirm":"password123"
-}
-
-<> 2022-09-08T083257.200.json
-
-###
-
-POST http://localhost:8080/api/auth/register
-Content-Type: application/json
-
-{
-  "nickname":"test1",
-  "email":"test1@naver.com",
-  "password":"password123",
-  "passwordConfirm":"password123"
-}
-
-<> 2022-09-08T083253.200.json
-
-###
-
-POST http://localhost:8080/api/auth/register
-Content-Type: application/json
-
-{
-  "nickname":"test1",
-  "email":"test1@naver.com",
-  "password":"password123",
-  "passwordConfirm":"password123"
-}
-
-<> 2022-09-08T083215.401.json
-
-###
-
-POST http://localhost:8080/api/auth/like/recomment/2
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraXllb24iLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJleHAiOjE2NjE5MzIzODR9.IWwc6BGTFZC-zqcOQP7msaedvHAiQgqywUlakOEXTnc
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjI1MzUzODR9.oZad_PAoCegZkZCkWZP49BVYzbUVOqVus2k2GDma2Mg
-
-<> 2022-08-31T163050.200.json
-
-###
-
-POST http://localhost:8080/api/auth/like/recomment/2
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzZW9uZ2hlZSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MTkzMjQwNH0.BlLRyupxFMV3mdfCcFoMtDCyUfozz_b4GFLqnZPvuwg
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjI1MzU0MDR9.No9yxrs0C24FjViLHGY0rVeLCspMrT3K2aELwkpDm7A
-
-<> 2022-08-31T163036.200.json
-
-###
-
-POST http://localhost:8080/api/auth/like/recomment/2
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzZW9uZ2hlZSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MTkzMjQwNH0.BlLRyupxFMV3mdfCcFoMtDCyUfozz_b4GFLqnZPvuwg
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjI1MzU0MDR9.No9yxrs0C24FjViLHGY0rVeLCspMrT3K2aELwkpDm7A
-
-<> 2022-08-31T162920.200.json
-
-###
-
-POST http://localhost:8080/api/auth/like/recomment/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzZW9uZ2hlZSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MTkzMjQwNH0.BlLRyupxFMV3mdfCcFoMtDCyUfozz_b4GFLqnZPvuwg
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjI1MzU0MDR9.No9yxrs0C24FjViLHGY0rVeLCspMrT3K2aELwkpDm7A
-
-<> 2022-08-31T162834.200.json
-
-###
-
-POST http://localhost:8080/api/auth/like/comment/2
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzZW9uZ2hlZSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MTkzMjQwNH0.BlLRyupxFMV3mdfCcFoMtDCyUfozz_b4GFLqnZPvuwg
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjI1MzU0MDR9.No9yxrs0C24FjViLHGY0rVeLCspMrT3K2aELwkpDm7A
-
-<> 2022-08-31T162823.200.json
-
-###
-
-POST http://localhost:8080/api/auth/like/comment/2
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzZW9uZ2hlZSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MTkzMjQwNH0.BlLRyupxFMV3mdfCcFoMtDCyUfozz_b4GFLqnZPvuwg
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjI1MzU0MDR9.No9yxrs0C24FjViLHGY0rVeLCspMrT3K2aELwkpDm7A
-
-<> 2022-08-31T162811.200.json
-
-###
-
-POST http://localhost:8080/api/auth/like/comment/2
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraXllb24iLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJleHAiOjE2NjE5MzIzODR9.IWwc6BGTFZC-zqcOQP7msaedvHAiQgqywUlakOEXTnc
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjI1MzUzODR9.oZad_PAoCegZkZCkWZP49BVYzbUVOqVus2k2GDma2Mg
-
-<> 2022-08-31T162754.200.json
-
-###
-
-POST http://localhost:8080/api/auth/like/comment/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraXllb24iLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJleHAiOjE2NjE5MzIzODR9.IWwc6BGTFZC-zqcOQP7msaedvHAiQgqywUlakOEXTnc
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjI1MzUzODR9.oZad_PAoCegZkZCkWZP49BVYzbUVOqVus2k2GDma2Mg
-
-<> 2022-08-31T162730.200.json
-
-###
-
-POST http://localhost:8080/api/auth/like/post/2
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraXllb24iLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJleHAiOjE2NjE5MzIzODR9.IWwc6BGTFZC-zqcOQP7msaedvHAiQgqywUlakOEXTnc
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjI1MzUzODR9.oZad_PAoCegZkZCkWZP49BVYzbUVOqVus2k2GDma2Mg
-
-<> 2022-08-31T162717.200.json
-
-###
-
-POST http://localhost:8080/api/auth/like/post/2
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraXllb24iLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJleHAiOjE2NjE5MzIzODR9.IWwc6BGTFZC-zqcOQP7msaedvHAiQgqywUlakOEXTnc
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjI1MzUzODR9.oZad_PAoCegZkZCkWZP49BVYzbUVOqVus2k2GDma2Mg
-
-<> 2022-08-31T162659.200.json
-
-###
-
-POST http://localhost:8080/api/auth/like/post/2
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzZW9uZ2hlZSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MTkzMjQwNH0.BlLRyupxFMV3mdfCcFoMtDCyUfozz_b4GFLqnZPvuwg
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjI1MzU0MDR9.No9yxrs0C24FjViLHGY0rVeLCspMrT3K2aELwkpDm7A
-
-<> 2022-08-31T162639.200.json
-
-###
-
-POST http://localhost:8080/api/auth/like/post/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJraXllb24iLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJleHAiOjE2NjE5MzIzODR9.IWwc6BGTFZC-zqcOQP7msaedvHAiQgqywUlakOEXTnc
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjI1MzUzODR9.oZad_PAoCegZkZCkWZP49BVYzbUVOqVus2k2GDma2Mg
-
-<> 2022-08-31T162623.200.json
 
 ###
 

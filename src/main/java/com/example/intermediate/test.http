@@ -33,21 +33,11 @@ POST http://localhost:8080/api/auth/email
 Content-Type: application/json
 
 {
-  "email":"test2@naver.com"
+  "email":"test3@naver.com"
 }
 
 
-########
-POST http://localhost:8080/api/auth/login
-Content-Type: application/json
-
-{
-  "email":"test2@naver.com",
-  "password":"password123"
-}
-
-
-########
+########로그인1
 POST http://localhost:8080/api/auth/login
 Content-Type: application/json
 
@@ -56,21 +46,30 @@ Content-Type: application/json
   "password":"password123"
 }
 
-########
+
+########로그인2
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "email":"test2@naver.com",
+  "password":"password123"
+}
+
+########회원정보조회
 GET http://localhost:8080/api/auth/mypage
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MjU5OTI4N30.r8KkqmiBcy85DovpVeZhz_Gf_o55J_tbCPTGbiLzBCk
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMDIyODd9.wV7uEpno95jmgFyu0a43g5LEyQfoMBWzVCiqT-ZKeX4
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MjYwMjkyNn0.3m2ijPWPRlXgKptX4NdeBx7_pGcQ4aWXtmsGWo7VOC8
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMDU5MjZ9.Jy192pQbc9PrmArmFF2QjkmZMo9MiWP4mnC6jzVFle0
 
 
-########
+########회원정보수정
 PUT http://localhost:8080/api/auth/mypage
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MjU5OTI4N30.r8KkqmiBcy85DovpVeZhz_Gf_o55J_tbCPTGbiLzBCk
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMDIyODd9.wV7uEpno95jmgFyu0a43g5LEyQfoMBWzVCiqT-ZKeX4
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MjYwMjkyNn0.3m2ijPWPRlXgKptX4NdeBx7_pGcQ4aWXtmsGWo7VOC8
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMDU5MjZ9.Jy192pQbc9PrmArmFF2QjkmZMo9MiWP4mnC6jzVFle0
 Content-Type: application/json
 
 {
   "nickname":"test12",
   "passwordConfirm":"password123",
-  "newPassword":"password12"
-
+  "newPassword":"password123"
 }
