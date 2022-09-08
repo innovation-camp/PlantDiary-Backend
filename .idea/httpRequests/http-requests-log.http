@@ -1,0 +1,263 @@
+PUT http://localhost:8080/api/auth/mypage
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiLtmozsm5DsnbwiLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJleHAiOjE2NjI2MTkxMzJ9.fN_d3Vic8fXxSkldVGMrhE4pbcdtZKIXX1vMR__Q_sA
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMjIxMzJ9.3wc9xQBYtLdfUL0cBLOyIx__0EBPWY0kOhiW_X_BB-A
+Content-Type: application/json
+
+{
+  "nickname":"회원일이",
+  "passwordConfirm":"password123",
+  "newPassword":"password123"
+}
+
+<> 2022-09-08T150914.200.json
+
+###
+
+GET http://localhost:8080/api/auth/mypage
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiLtmozsm5DsnbwiLCJhdXRoIjoiUk9MRV9NRU1CRVIiLCJleHAiOjE2NjI2MTkxMzJ9.fN_d3Vic8fXxSkldVGMrhE4pbcdtZKIXX1vMR__Q_sA
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMjIxMzJ9.3wc9xQBYtLdfUL0cBLOyIx__0EBPWY0kOhiW_X_BB-A
+
+<> 2022-09-08T150904.200.json
+
+###
+
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "email":"test1@naver.com",
+  "password":"password123"
+}
+
+<> 2022-09-08T150853.200.json
+
+###
+
+POST http://localhost:8080/api/auth/email
+Content-Type: application/json
+
+{
+  "email":"test@naver.com"
+}
+
+<> 2022-09-08T150848.200.json
+
+###
+
+POST http://localhost:8080/api/auth/email
+Content-Type: application/json
+
+{
+  "email":"test@naver.com"
+}
+
+<> 2022-09-08T150847.200.json
+
+###
+
+POST http://localhost:8080/api/auth/email
+Content-Type: application/json
+
+{
+  "email":"test3@naver.com"
+}
+
+<> 2022-09-08T150844.200.json
+
+###
+
+POST http://localhost:8080/api/auth/email
+Content-Type: application/json
+
+{
+  "email":"test3@naver.com"
+}
+
+<> 2022-09-08T150843.200.json
+
+###
+
+POST http://localhost:8080/api/auth/nickname
+Content-Type: application/json
+
+{
+  "nickname":"회원사"
+}
+
+<> 2022-09-08T150839.200.json
+
+###
+
+POST http://localhost:8080/api/auth/nickname
+Content-Type: application/json
+
+{
+  "nickname":"회원사"
+}
+
+<> 2022-09-08T150838.200.json
+
+###
+
+POST http://localhost:8080/api/auth/nickname
+Content-Type: application/json
+
+{
+  "nickname":"회원일"
+}
+
+<> 2022-09-08T150833.200.json
+
+###
+
+POST http://localhost:8080/api/auth/nickname
+Content-Type: application/json
+
+{
+  "nickname":"회원일"
+}
+
+<> 2022-09-08T150832.200.json
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "nickname":"회원삼",
+  "email":"test3@naver.com",
+  "password":"password123",
+  "passwordConfirm":"password123"
+}
+
+<> 2022-09-08T150822.200.json
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "nickname":"회원2",
+  "email":"test2@naver.com",
+  "password":"password123",
+  "passwordConfirm":"password123"
+}
+
+<> 2022-09-08T150812.400.json
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "nickname":"회원이",
+  "email":"test2@naver.com",
+  "password":"password123",
+  "passwordConfirm":"password123"
+}
+
+<> 2022-09-08T150804.200.json
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "nickname":"회원이",
+  "email":"test1@naver.com",
+  "password":"password123",
+  "passwordConfirm":"password123"
+}
+
+<> 2022-09-08T150759.200.json
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "nickname":"회원이",
+  "email":"test1@naver.com",
+  "password":"password123",
+  "passwordConfirm":"password123"
+}
+
+<> 2022-09-08T150757.200.json
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "nickname":"회원일",
+  "email":"test1@naver.com",
+  "password":"password123",
+  "passwordConfirm":"password123"
+}
+
+<> 2022-09-08T150751.200.json
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "nickname":"회원일",
+  "email":"test1@naver.com",
+  "password":"password123",
+  "passwordConfirm":"password123"
+}
+
+<> 2022-09-08T150750.200.json
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "nickname":"회원2",
+  "email":"test2@naver.com",
+  "password":"password123",
+  "passwordConfirm":"password123"
+}
+
+<> 2022-09-08T150736.400.json
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "nickname":"회원일",
+  "email":"test1@naver.com",
+  "password":"password123",
+  "passwordConfirm":"password123"
+}
+
+<> 2022-09-08T150733.200.json
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "nickname":"test1",
+  "email":"test1@naver.com",
+  "password":"password123",
+  "passwordConfirm":"password123"
+}
+
+<> 2022-09-08T150712.400.json
+
+###
+

@@ -1,18 +1,21 @@
 package com.sparta.plantdiary.entity;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
-@Builder
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Where(clause = "deleted_at IS NULL")
+@SQLDelete(sql = "UPDATE post SET deleted_at = CURRENT_TIMESTAMP WHERE id = ?")
 public class Post extends TimeStamped{
 
     @Id
@@ -23,7 +26,7 @@ public class Post extends TimeStamped{
     private String title;
 
     @Column(nullable = false, columnDefinition = "TEXT")
-    private String text;
+    private String content;
 
     @Column(nullable = true, columnDefinition = "TEXT")
     private String thumbnail;
@@ -31,11 +34,14 @@ public class Post extends TimeStamped{
     @Column(nullable = true)
     private Long countComments = 0L;
 
-    @Column(nullable = true)
-    private LocalDateTime deletedAt;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "writer_id")
     private Member writer;
 
+    public Post(String title, String content, String thumbnail, Member writer) {
+        this.title = title;
+        this.content = content;
+        this.thumbnail = thumbnail;
+        this.writer = writer;
+    };
 }

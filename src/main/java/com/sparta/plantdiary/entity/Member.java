@@ -1,18 +1,23 @@
 package com.sparta.plantdiary.entity;
 
+import com.sparta.plantdiary.dto.MypageRequestDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Builder
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Where(clause = "deleted_at IS NULL")
+@SQLDelete(sql = "UPDATE member SET deleted_at = CURRENT_TIMESTAMP WHERE id = ?")
 public class Member extends TimeStamped {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,12 +32,24 @@ public class Member extends TimeStamped {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String password;
 
-    @Column(nullable = true)
-    private LocalDateTime deletedAt;
-
     public Member(String nickname, String email, String password) {
         this.nickname = nickname;
         this.email = email;
         this.password = password;
     };
+
+    public void updateNickname(MypageRequestDto requestDto){
+        if(!(""==requestDto.getNickname())){
+            this.nickname = requestDto.getNickname();
+        }
+    }
+    public void updatePassword(String pw){
+        if(!(""==pw)) {
+            this.password = pw;
+        }
+    }
+
+    public boolean validatePassword(PasswordEncoder passwordEncoder, String password) {
+        return passwordEncoder.matches(password, this.password);
+    }
 }

@@ -18,7 +18,7 @@ class MemberRepositoryTest {
     MemberRepository memberRepository;
 
     @Test
-    void create() {
+    public void testCreate() {
         HashMap<String, String> expected = new HashMap<>();
         expected.put("nickname", "nickname");
         expected.put("email", "email@email.com");
