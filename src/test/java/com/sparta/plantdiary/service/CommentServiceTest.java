@@ -5,6 +5,7 @@ import com.sparta.plantdiary.command.UpdateCommentCommand;
 import com.sparta.plantdiary.entity.Comment;
 import com.sparta.plantdiary.entity.Member;
 import com.sparta.plantdiary.entity.Post;
+import com.sparta.plantdiary.error.ForbiddenException;
 import com.sparta.plantdiary.error.NotFoundException;
 import com.sparta.plantdiary.repository.CommentRepository;
 import com.sparta.plantdiary.repository.MemberRepository;
@@ -80,7 +81,7 @@ class CommentServiceTest {
     }
 
     @Test
-    public void testUpdateById() throws NotFoundException {
+    public void testUpdateById() throws NotFoundException, ForbiddenException {
         UpdateCommentCommand command = new UpdateCommentCommand(comment.getId(), "업데이트된 댓글", post.getId());
         Comment updatedComment = commentService.updateById(command);
 
@@ -104,7 +105,7 @@ class CommentServiceTest {
     }
 
     @Test
-    public void testDeleteById() throws NotFoundException {
+    public void testDeleteById() throws NotFoundException, ForbiddenException {
         Long id = comment.getId();
         commentService.deleteById(id);
         Optional<Comment> deletedComment = commentRepository.findById(id);

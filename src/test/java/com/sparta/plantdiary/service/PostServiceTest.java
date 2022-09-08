@@ -4,6 +4,7 @@ import com.sparta.plantdiary.command.CreatePostCommand;
 import com.sparta.plantdiary.command.UpdatePostCommand;
 import com.sparta.plantdiary.entity.Member;
 import com.sparta.plantdiary.entity.Post;
+import com.sparta.plantdiary.error.ForbiddenException;
 import com.sparta.plantdiary.error.NotFoundException;
 import com.sparta.plantdiary.repository.MemberRepository;
 import com.sparta.plantdiary.repository.PostRepository;
@@ -88,7 +89,7 @@ class PostServiceTest {
     }
 
     @Test
-    void testDeleteByIdSuccess() throws NotFoundException {
+    void testDeleteByIdSuccess() throws NotFoundException, ForbiddenException {
 
         Long id = post.getId();
 
@@ -105,7 +106,7 @@ class PostServiceTest {
     }
 
     @Test
-    void testUpdateById() throws NotFoundException {
+    void testUpdateById() throws NotFoundException, ForbiddenException {
         UpdatePostCommand command = new UpdatePostCommand(post.getId(), "업데이트된 제목", "업데이트된 내용", "업데이트된 썸네일");
         Post updatedPost = postService.updateById(command);
 

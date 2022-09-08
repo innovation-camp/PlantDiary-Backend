@@ -8,8 +8,9 @@ import com.sparta.plantdiary.dto.ThumbnailResponse;
 import com.sparta.plantdiary.dto.WriterResponseDto;
 import com.sparta.plantdiary.entity.Member;
 import com.sparta.plantdiary.entity.Post;
+import com.sparta.plantdiary.error.ForbiddenException;
 import com.sparta.plantdiary.error.NotFoundException;
-import com.sparta.plantdiary.repository.MemberRepository;
+import com.sparta.plantdiary.jwt.TokenProvider;
 import com.sparta.plantdiary.service.PostService;
 import com.sparta.plantdiary.service.S3UploadService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -37,9 +38,8 @@ import java.util.List;
 public class PostController {
 
     public final PostService postService;
-    public final MemberRepository memberRepository; // TODO: 인증 기능 개발 후 삭제할 것
-
     private final S3UploadService s3UploadService;
+    public final TokenProvider tokenProvider;
 
     @Operation(summary = "upload images", description = "s3 이미지 업로드")
     @ApiResponse(responseCode = "200", description = "OK", content = @Content(schema = @Schema(implementation = ThumbnailResponse.class)))
@@ -56,12 +56,7 @@ public class PostController {
     @PostMapping("")
     public ResponseEntity<PostResponse> createPost(@RequestBody @Valid PostRequest request) {
 
-        /**
-         * TODO: 인증 기능 개발 후 삭제할 것
-         * 아직 인증 기능이 개발되지 않아서 임시로 작성자 데이터를 만들었음.
-         */
-        Member writer = new Member("버블티", "bubble@bubble.com", "password");
-        memberRepository.save(writer);
+        Member writer = tokenProvider.getMemberFromAuthentication();
 
         CreatePostCommand command = new CreatePostCommand(request.getTitle(), request.getContent(), request.getThumbnail(), writer);
 
@@ -110,8 +105,9 @@ public class PostController {
     @ApiResponse(responseCode = "200", description = "OK")
     @ResponseBody
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deletePostById(@PathVariable Long id) throws NotFoundException {
+    public ResponseEntity<String> deletePostById(@PathVariable Long id) throws NotFoundException, ForbiddenException {
         postService.deleteById(id);
+
         return new ResponseEntity<>("게시글이 삭제되었습니다.", HttpStatus.OK);
     }
 
@@ -119,7 +115,7 @@ public class PostController {
     @ApiResponse(responseCode = "200", description = "OK", content = @Content(schema = @Schema(implementation = PostResponse.class)))
     @ResponseBody
     @PutMapping("/{id}")
-    public ResponseEntity<PostResponse> updatePostById(@PathVariable Long id, @RequestBody @Valid PostRequest request) throws NotFoundException {
+    public ResponseEntity<PostResponse> updatePostById(@PathVariable Long id, @RequestBody @Valid PostRequest request) throws NotFoundException, ForbiddenException {
 
         UpdatePostCommand command = new UpdatePostCommand(id, request.getTitle(), request.getContent(), request.getThumbnail());
 
