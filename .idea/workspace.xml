@@ -80,9 +80,6 @@
   }
 }</component>
   <component name="RunManager" selected="Spring Boot.IntermediateApplication">
-    <configuration name="logintest | 회원1 대댓글2에 좋아요" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/logintest.http" index="25" requestIdentifier="회원1 대댓글2에 좋아요" runType="Run single request">
-      <method v="2" />
-    </configuration>
     <configuration name="test | ########## 회원가입1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/main/java/com/example/intermediate/test.http" requestIdentifier="########## 회원가입1" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -93,6 +90,9 @@
       <method v="2" />
     </configuration>
     <configuration name="test | ###########2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/main/java/com/example/intermediate/test.http" index="4" requestIdentifier="###########2" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="test | ###########3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/main/java/com/example/intermediate/test.http" index="5" requestIdentifier="###########3" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="IntermediateApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
@@ -108,16 +108,16 @@
       <item itemvalue="HTTP Request.test | ########## 회원가입2" />
       <item itemvalue="HTTP Request.test | ###########1" />
       <item itemvalue="HTTP Request.test | ###########2" />
-      <item itemvalue="HTTP Request.logintest | 회원1 대댓글2에 좋아요" />
+      <item itemvalue="HTTP Request.test | ###########3" />
       <item itemvalue="Spring Boot.IntermediateApplication" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="HTTP Request.test | ###########3" />
         <item itemvalue="HTTP Request.test | ###########2" />
         <item itemvalue="HTTP Request.test | ###########1" />
         <item itemvalue="HTTP Request.test | ########## 회원가입2" />
         <item itemvalue="HTTP Request.test | ########## 회원가입1" />
-        <item itemvalue="HTTP Request.logintest | 회원1 대댓글2에 좋아요" />
       </list>
     </recent_temporary>
   </component>
@@ -137,7 +137,7 @@
       <workItem from="1661929969168" duration="832000" />
       <workItem from="1661932331953" duration="14940000" />
       <workItem from="1662443054952" duration="5641000" />
-      <workItem from="1662455936279" duration="7813000" />
+      <workItem from="1662455936279" duration="9998000" />
     </task>
     <servers />
   </component>

@@ -86,30 +86,6 @@ public class MemberService {
     );
   }
 
-//  @Transactional
-//  public ResponseDto<?> reissue(HttpServletRequest request, HttpServletResponse response) {
-//    if (!tokenProvider.validateToken(request.getHeader("Refresh-Token"))) {
-//      return ResponseDto.fail("INVALID_TOKEN", "Token이 유효하지 않습니다.");
-//    }
-//    Member member = tokenProvider.getMemberFromAuthentication();
-//    if (null == member) {
-//      return ResponseDto.fail("MEMBER_NOT_FOUND",
-//          "사용자를 찾을 수 없습니다.");
-//    }
-//
-//    Authentication authentication = tokenProvider.getAuthentication(request.getHeader("Access-Token"));
-//    RefreshToken refreshToken = tokenProvider.isPresentRefreshToken(member);
-//
-//    if (!refreshToken.getValue().equals(request.getHeader("Refresh-Token"))) {
-//      return ResponseDto.fail("INVALID_TOKEN", "Token이 유효하지 않습니다.");
-//    }
-//
-//    TokenDto tokenDto = tokenProvider.generateTokenDto(member);
-//    refreshToken.updateValue(tokenDto.getRefreshToken());
-//    tokenToHeaders(tokenDto, response);
-//    return ResponseDto.success("success");
-//  }
-
   public ResponseDto<?> logout(HttpServletRequest request) {
     if (!tokenProvider.validateToken(request.getHeader("Refresh-Token"))) {
       return ResponseDto.fail("INVALID_TOKEN", "Token이 유효하지 않습니다.");
@@ -123,24 +99,54 @@ public class MemberService {
     return tokenProvider.deleteRefreshToken(member);
   }
 
-//  public ResponseMypageDto<?> mypage(HttpServletRequest request) {
-//    if (null == request.getHeader("Refresh-Token")) {
-//      return ResponseMypageDto.fail("MEMBER_NOT_FOUND",
-//              "로그인이 필요합니다.");
-//    }
-//
-//    if (null == request.getHeader("Authorization")) {
-//      return ResponseMypageDto.fail("MEMBER_NOT_FOUND",
-//              "로그인이 필요합니다.");
-//    }
-//
-//    Member member = validateMember(request);
-//    if (null == member) {
-//      return ResponseMypageDto.fail("INVALID_TOKEN", "Token이 유효하지 않습니다.");
-//    }
-//
-//    return ResponseMypageDto.fail("","");
-//  }
+  public ResponseDto<?> mypage(HttpServletRequest request) {
+    if (null == request.getHeader("Refresh-Token")) {
+      return ResponseDto.fail("MEMBER_NOT_FOUND",
+              "로그인이 필요합니다.");
+    }
+
+    if (null == request.getHeader("Authorization")) {
+      return ResponseDto.fail("MEMBER_NOT_FOUND",
+              "로그인이 필요합니다.");
+    }
+
+    Member member = validateMember(request);
+    if (null == member) {
+      return ResponseDto.fail("INVALID_TOKEN", "Token이 유효하지 않습니다.");
+    }
+
+
+    return ResponseDto.success(
+            MemberResponseDto.builder()
+                    .id(member.getId())
+                    .nickname(member.getNickname())
+                    .email(member.getEmail())
+                    .build()
+    );
+  }
+
+  public ResponseDto<?> mypageUpdate(MypageRequestDto requestDto, HttpServletRequest request) {
+
+    if (null == request.getHeader("Refresh-Token")) {
+      return ResponseDto.fail("MEMBER_NOT_FOUND",
+              "로그인이 필요합니다.");
+    }
+
+    if (null == request.getHeader("Authorization")) {
+      return ResponseDto.fail("MEMBER_NOT_FOUND",
+              "로그인이 필요합니다.");
+    }
+
+    Member member = validateMember(request);
+    if (null == member) {
+      return ResponseDto.fail("INVALID_TOKEN", "Token이 유효하지 않습니다.");
+    }
+    //비밀번호 확인해야함
+    member.update(requestDto);
+
+    return ResponseDto.success(member);
+  }
+
 
 
   public ResponseDto<?> emailCheak(EmailRequestDto requestDto){

@@ -1,5 +1,6 @@
 package com.example.intermediate.repository.domain;
 
+import com.example.intermediate.controller.request.MypageRequestDto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Objects;
 import javax.persistence.Column;
@@ -34,6 +35,11 @@ public class Member extends Timestamped {
   @Column(nullable = false)
   @JsonIgnore
   private String password;
+
+  public void update(MypageRequestDto requestDto){
+    this.nickname = requestDto.getNickname();
+    this.password = requestDto.getPassword();
+  }
 
   @Override
   public boolean equals(Object o) {

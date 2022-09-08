@@ -33,5 +33,17 @@ Content-Type: application/json
 
 ########
 GET http://localhost:8080/api/auth/mypage
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MjU5NTM4MH0.fagTVSCSubt54JxqaJ0Jo05usIWaC6fQadUUdiGMSj8
-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMxOTgzODB9.q4G_z3qBTj2h0zdTpX0btI0ioGCDQ9NoQCoyr6T07iQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MjU5NzQwNH0.tVrQ7bEVCNbyhQcFhg77nL3nazNfixJWEXIdr_7dh4s
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMDA0MDR9.bV2aeWFgWMwgwyvYHLVy4inaaXhQALSYbBVW90AgDSQ
+
+
+########
+PUT http://localhost:8080/api/auth/mypage
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImF1dGgiOiJST0xFX01FTUJFUiIsImV4cCI6MTY2MjU5NzQwNH0.tVrQ7bEVCNbyhQcFhg77nL3nazNfixJWEXIdr_7dh4s
+Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjMyMDA0MDR9.bV2aeWFgWMwgwyvYHLVy4inaaXhQALSYbBVW90AgDSQ
+Content-Type: application/json
+
+{
+  "nickname":"test12",
+  "password":"password123"
+}

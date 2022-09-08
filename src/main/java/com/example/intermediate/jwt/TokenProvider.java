@@ -81,23 +81,6 @@ public class TokenProvider {
 
   }
 
-//  public Authentication getAuthentication(String accessToken) {
-//    Claims claims = parseClaims(accessToken);
-//
-//    if (claims.get(AUTHORITIES_KEY) == null) {
-//      throw new RuntimeException("권한 정보가 없는 토큰 입니다.");
-//    }
-//
-//    Collection<? extends GrantedAuthority> authorities =
-//        Arrays.stream(claims.get(AUTHORITIES_KEY).toString().split(","))
-//            .map(SimpleGrantedAuthority::new)
-//            .collect(Collectors.toList());
-//
-//    UserDetails principal = userDetailsService.loadUserByUsername(claims.getSubject());
-//
-//    return new UsernamePasswordAuthenticationToken(principal, "", authorities);
-//  }
-
   public Member getMemberFromAuthentication() {
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     if (authentication == null || AnonymousAuthenticationToken.class.

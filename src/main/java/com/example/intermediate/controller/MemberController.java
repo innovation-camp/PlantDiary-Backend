@@ -1,9 +1,6 @@
 package com.example.intermediate.controller;
 
-import com.example.intermediate.controller.request.EmailRequestDto;
-import com.example.intermediate.controller.request.LoginRequestDto;
-import com.example.intermediate.controller.request.MemberRequestDto;
-import com.example.intermediate.controller.request.NicknameRequestDto;
+import com.example.intermediate.controller.request.*;
 import com.example.intermediate.controller.response.ResponseDto;
 import com.example.intermediate.service.MemberService;
 import javax.servlet.http.HttpServletRequest;
@@ -34,16 +31,16 @@ public class MemberController {
   }
 
     //회원정보 조회
-//  @RequestMapping(value = "/api/auth/mypage", method = RequestMethod.GET)
-//  public ResponseDto<?> mypage(HttpServletRequest request) {
-//    return memberService.mypage(request);
-//  }
+  @RequestMapping(value = "/api/auth/mypage", method = RequestMethod.GET)
+  public ResponseDto<?> mypage(HttpServletRequest request) {
+    return memberService.mypage(request);
+  }
 
   //회원정보 수정
-//    @RequestMapping(value = "/api/auth/mypage", method = RequestMethod.PUT)
-//    public ResponseDto<?> mypageChange(@RequestBody @Valid MemberRequestDto requestDto, HttpServletRequest request) {
-//        return memberService.mypageChange(requestDto, request);
-//    }
+    @RequestMapping(value = "/api/auth/mypage", method = RequestMethod.PUT)
+    public ResponseDto<?> mypageChange(@RequestBody @Valid MypageRequestDto requestDto, HttpServletRequest request) {
+        return memberService.mypageUpdate(requestDto, request);
+    }
 
   //이메일 중복확인
   @RequestMapping(value = "/api/auth/email", method = RequestMethod.GET)

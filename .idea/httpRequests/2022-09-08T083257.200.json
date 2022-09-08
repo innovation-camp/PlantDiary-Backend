@@ -1,0 +1,11 @@
+{
+  "success": true,
+  "data": {
+    "id": 2,
+    "email": "test2@naver.com",
+    "nickname": "test2",
+    "createdAt": "2022-09-08T08:32:57.4070039",
+    "modifiedAt": "2022-09-08T08:32:57.4070039"
+  },
+  "error": null
+}

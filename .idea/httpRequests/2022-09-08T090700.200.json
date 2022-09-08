@@ -1,0 +1,8 @@
+{
+  "success": false,
+  "data": null,
+  "error": {
+    "code": "BAD_REQUEST",
+    "message": "\"[a-zA-Z\\d]*${3,12}\"와 일치해야 합니다"
+  }
+}
