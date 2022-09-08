@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
     @AllArgsConstructor
     public class MypageRequestDto {
 
-        @Size(min = 4, max = 12)
+
         @Pattern(regexp = "^[가-힣]*$")
         private String nickname;
 
